@@ -139,10 +139,10 @@ public class Purchase {
 		StringBuilder builder = new StringBuilder();
 		builder.append("[id=");
 		builder.append(id);
-		builder.append(", customer=");
-		builder.append(customer);
-		builder.append(", items=");
-		builder.append(items);
+//		builder.append(", customer=");
+//		builder.append(customer);
+//		builder.append(", items=");
+//		builder.append(items);
 		builder.append(", date=");
 		builder.append(date);
 		builder.append(", totalValue=");
