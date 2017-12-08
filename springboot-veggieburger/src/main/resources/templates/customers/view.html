@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+	<title>Customer</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+	<h1 layout:fragment="header">Customer</h1>
+	<div layout:fragment="content" class="well">
+		<a href="form.html" th:href="@{/customers/new}">New customer</a>
+		<div class="alert alert-success" 
+			th:if="${globalMessage}" th:text="${globalMessage}">
+			Customer created.
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Address</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id="id" th:text="${customer.id}">123</td>
+					<td id="nome" th:text="${customer.name}">Name</td>
+					<td id="endereco" th:text="${customer.address}">Address</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
