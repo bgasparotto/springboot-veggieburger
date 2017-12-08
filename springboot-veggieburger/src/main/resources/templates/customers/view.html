@@ -30,6 +30,14 @@
 				</tr>
 			</tbody>
 		</table>
+		
+		<div class="pull-left">
+			<a href="form.html" th:href="@{'/customers/modify/'+
+			${customer.id}}">Modify</a>
+			| <a href="customers" th:href="@{'/customers/remove/'+
+			${customer.id}}">Remove</a>
+			| <a th:href="@{/customers/}" href="list.html">Go back</a>
+		</div>
 	</div>
 </body>
 </html>
