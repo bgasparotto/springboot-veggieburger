@@ -35,21 +35,21 @@ public class CustomerController {
 		List<Customer> customers = repository.findAll();
 		return new ModelAndView("customers/list", "customers", customers);
 	}
-	
+
 	@GetMapping("{id}")
 	public ModelAndView view(@PathVariable("id") Customer customer) {
 		return new ModelAndView("customers/view", "customer", customer);
 	}
-	
+
 	@GetMapping("/new")
 	public String createForm(@ModelAttribute Customer customer) {
 		return "customers/form";
 	}
-	
+
 	@PostMapping(params = "form")
 	public ModelAndView create(@Valid Customer customer, BindingResult result,
 			RedirectAttributes redirect) {
-		
+
 		if (result.hasErrors()) {
 			String viewName = "/customers/form";
 			String modelName = "formErrors";
@@ -57,12 +57,30 @@ public class CustomerController {
 
 			return new ModelAndView(viewName, modelName, modelObject);
 		}
-		
+
 		customer = repository.save(customer);
-		String message = "Customer successfully created";
+		String message = "Customer successfully saved";
 		redirect.addFlashAttribute("globalMessage", message);
-		
+
 		String viewName = "redirect:/customers/{customer.id}";
-		return new ModelAndView(viewName, "customer.id", customer.getId()); 
+		return new ModelAndView(viewName, "customer.id", customer.getId());
+	}
+
+	@GetMapping("modify/{id}")
+	public ModelAndView modifyForm(@PathVariable("id") Customer customer) {
+		return new ModelAndView("customers/form", "customer", customer);
+	}
+	
+	@GetMapping("remove/{id}")
+	public ModelAndView remove(@PathVariable("id") Long id,
+			RedirectAttributes redirect) {
+		repository.delete(id);
+
+		List<Customer> customers = repository.findAll();
+		ModelAndView mv = new ModelAndView("customers/list", "customers",
+				customers);
+		mv.addObject("globalMessage", "Customer successfully removed");
+		
+		return mv;
 	}
 }
