@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+	<title>Orders</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+	<h1 layout:fragment="header">Orders List</h1>
+	<div layout:fragment="content" class="container">
+		<a href="form.html" th:href="@{/orders/new}">New order</a>
+		<div class="alert alert-success" 
+			th:if="${globalMessage}" th:text="${globalMessage}">
+			Message
+		</div>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<td>Id</td>
+					<td>Customer</td>
+					<td>Date</td>
+					<td>Total Value</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${orders.empty}">
+					<td colspan="3">No entries</td>
+				</tr>
+				<tr th:each="order : ${orders}">
+					<td th:text="${order.id}">1</td>
+					<td>
+						<a href="view.html" 
+							th:href="@{'/orders/'+${order.id}}"
+							th:text="${order.customer.name}">Name</a>
+					</td>
+					<td th:text="${#dates.format(order.date,'dd/MM/yyyy HH:mm:ss')}">Date</td>
+					<td th:text="${order.totalValue}">100.0</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
