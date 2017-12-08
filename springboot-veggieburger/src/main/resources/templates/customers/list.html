@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+	<title>Customers</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+	<h1 layout:fragment="header">
+		Customers List
+	</h1>
+	<div layout:fragment="content" class="container">
+		<a href="form.html" th:href="@{/customers/new}">New customer</a>
+		<div class="alert alert-success" 
+			th:if="${globalMessage}" th:text="${globalMessage}">
+			Message
+		</div>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<td>Id</td>
+					<td>Name</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${customers.empty}">
+					<td colspan="3">No entries</td>
+				</tr>
+				<tr th:each="customer : ${customers}">
+					<td th:text="${customer.id}"></td>
+					<td>
+						<a href="view.html" 
+							th:href="@{'/customers/'+${customer.id}}"
+							th:text="${customer.name}"> Name 
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
