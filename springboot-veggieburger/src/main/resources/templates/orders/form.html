@@ -3,34 +3,59 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout">
 <head>
-	<title>Item</title>
+	<title>Order</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<script>
+		$(function() {
+			$("#date").datepicker({
+				changeMonth : true,
+				changeYear : true,
+				dateFormat : 'dd-mm-yy'
+			});
+		});
+	</script>
 </head>
 <body>
-	<h1 layout:fragment="header">New item</h1>
+	<h1 layout:fragment="header">New order</h1>
 	<div layout:fragment="content" class="input-form">
 		<div class="well">
 		
-			<form id="itemForm" th:action="@{/items/(form)}"
-			th:object="${item}" action="#" method="post" class="form-horizontal">
+			<form id="orderForm" th:action="@{/orders/(form)}"
+			th:object="${purchase}" action="#" method="post" class="form-horizontal">
 			
 				<div th:if="${#fields.hasErrors('*')}" class="alert alert-error">
 					<p th:each="error : ${#fields.errors('*')}" th:text="${error}">
 						Validation errors
 					</p>
 				</div>
-				
 				<input type="hidden" th:field="*{id}"
 					th:class="${#fields.hasErrors('id')} ? 'field-error'" />
+				
+				<!-- Customer's name -->
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="name">Name</label>
-					<input class="col-sm-10" type="text" th:field="*{name}"
-						th:class="${#fields.hasErrors('name')} ? 'field-error'" />
+					<select class="col-sm-10"  th:field="*{customer}" >
+						<option th:each="customer : ${availableCustomers}" 
+							th:value="${customer.id}" 
+							th:text="${customer.name}" />
+             		</select>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="price">Price</label>
-					<input class="col-sm-10" th:field="*{price}"
-						th:class="${#fields.hasErrors('price')} ? 'field-error'"/>
+				
+				<!-- Order's date -->
+				<div class="form-group">  
+					<label class="control-label col-sm-2" for="text">Date</label>
+					<input class="col-sm-10" type="text" id="date" th:field="*{date}" 
+						th:class="${#fields.hasErrors('date')} ? 'field-error'"/>
+				</div>
+				
+				<!-- Order's items -->
+				<div class="form-group">  
+					<label class="control-label col-sm-2" for="text">Items</label>
+					<select id="itemsList" multiple="multiple" 
+						th:field="*{items}" name="itemsListId">
+						<option th:each="item : ${availableItems}" 
+							th:value="${{item}}" th:text="${item.name}" />
+					</select>
 				</div>
 				
 				<div class="col-sm-offset-2 col-sm-10">
@@ -38,7 +63,7 @@
 				</div>
 				<br/>
 				
-				<a th:href="@{/items/}" href="items.html">Go back</a>
+				<a th:href="@{/orders/}" href="orders.html">Go back</a>
 				
 			</form>
 			
