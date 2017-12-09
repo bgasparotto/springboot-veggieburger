@@ -19,18 +19,30 @@
 				<tr>
 					<th>Id</th>
 					<th>Customer's name</th>
+					<th>Customer's address</th>
 					<th>Date</th>
 					<th>Total Value</th>
-					<th>Items</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td id="id" th:text="${order.id}">123</td>
 					<td id="customer-name" th:text="${order.customer.name}">Name</td>
+					<td id="customer-address" th:text="${order.customer.address}">Address</td>
 					<td id="date" th:text="${#dates.format(order.date,'dd/MM/yyyy HH:mm:ss')}">10/12/2017 11:22:33</td>
 					<td id="total-value" th:text="${order.totalValue}">00.0</td>
-					<td id="total-value" th:text="TODO">00.0</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Items</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="items" th:each="item : ${order.items}">
+					<td th:text="${item.name}">Item's name"></td>
 				</tr>
 			</tbody>
 		</table>
