@@ -40,6 +40,12 @@
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 		
+		<!-- Spring REST HAL Browser -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-rest-hal-browser</artifactId>
+		</dependency>
+		
 		<!-- Spring Boot Starter Web MVC -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
