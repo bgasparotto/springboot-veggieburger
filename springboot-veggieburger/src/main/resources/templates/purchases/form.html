@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout">
 <head>
-	<title>Order</title>
+	<title>Purchase</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 	<script>
 		$(function() {
@@ -16,11 +16,11 @@
 	</script>
 </head>
 <body>
-	<h1 layout:fragment="header">New order</h1>
+	<h1 layout:fragment="header">New purchase</h1>
 	<div layout:fragment="content" class="input-form">
 		<div class="well">
 		
-			<form id="orderForm" th:action="@{/orders/(form)}"
+			<form id="purchaseForm" th:action="@{/purchases/(form)}"
 			th:object="${purchase}" action="#" method="post" class="form-horizontal">
 			
 				<div th:if="${#fields.hasErrors('*')}" class="alert alert-error">
@@ -41,14 +41,14 @@
              		</select>
 				</div>
 				
-				<!-- Order's date -->
+				<!-- Purchase's date -->
 				<div class="form-group">  
 					<label class="control-label col-sm-2" for="text">Date</label>
 					<input class="col-sm-10" type="text" id="date" th:field="*{date}" 
 						th:class="${#fields.hasErrors('date')} ? 'field-error'"/>
 				</div>
 				
-				<!-- Order's items -->
+				<!-- Purchase's items -->
 				<div class="form-group">  
 					<label class="control-label col-sm-2" for="text">Items</label>
 					<select id="itemsList" multiple="multiple" 
@@ -63,7 +63,7 @@
 				</div>
 				<br/>
 				
-				<a th:href="@{/orders/}" href="orders.html">Go back</a>
+				<a th:href="@{/purchases/}" href="purchases.html">Go back</a>
 				
 			</form>
 			

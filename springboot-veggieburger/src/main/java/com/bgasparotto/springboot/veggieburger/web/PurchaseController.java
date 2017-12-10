@@ -30,7 +30,7 @@ import com.bgasparotto.springboot.veggieburger.persistence.PurchaseRepository;
  *
  */
 @Controller
-@RequestMapping("/orders")
+@RequestMapping("/purchases")
 public class PurchaseController {
 
 	@Autowired
@@ -45,12 +45,12 @@ public class PurchaseController {
 	@GetMapping
 	public ModelAndView list() {
 		List<Purchase> purchases = repository.findAll();
-		return new ModelAndView("orders/list", "orders", purchases);
+		return new ModelAndView("purchases/list", "purchases", purchases);
 	}
 
 	@GetMapping("{id}")
 	public ModelAndView view(@PathVariable("id") Purchase purchase) {
-		return new ModelAndView("orders/view", "order", purchase);
+		return new ModelAndView("purchases/view", "purchase", purchase);
 	}
 
 	@GetMapping("/new")
@@ -62,7 +62,7 @@ public class PurchaseController {
 		model.put("availableCustomers", availableCustomers);
 		model.put("availableItems", availableItems);
 		
-		return new ModelAndView("orders/form", model);
+		return new ModelAndView("purchases/form", model);
 	}
 
 	@PostMapping(params = "form")
@@ -71,7 +71,7 @@ public class PurchaseController {
 
 		/* Validate against errors. */
 		if (result.hasErrors()) {
-			String viewName = "/orders/form";
+			String viewName = "/purchases/form";
 			String modelName = "formErrors";
 			List<ObjectError> modelObject = result.getAllErrors();
 
@@ -86,14 +86,14 @@ public class PurchaseController {
 		}
 		purchase.setTotalValue(totalValue);
 
-		/* Save the new order. */
+		/* Save the new purchase. */
 		purchase = repository.save(purchase);
-		String message = "Order successfully saved";
+		String message = "Purchase successfully saved";
 		redirect.addFlashAttribute("globalMessage", message);
 
-		/* Return the new saved order. */
-		String viewName = "redirect:/orders/{order.id}";
-		return new ModelAndView(viewName, "order.id", purchase.getId());
+		/* Return the new saved purchase. */
+		String viewName = "redirect:/purchases/{purchase.id}";
+		return new ModelAndView(viewName, "purchase.id", purchase.getId());
 	}
 
 	@GetMapping("modify/{id}")
@@ -106,7 +106,7 @@ public class PurchaseController {
 		model.put("availableItems", availableItems);
 		model.put("purchase", purchase);
 		
-		return new ModelAndView("orders/form", model);
+		return new ModelAndView("purchases/form", model);
 	}
 	
 	@GetMapping("remove/{id}")
@@ -120,9 +120,9 @@ public class PurchaseController {
 		repository.delete(id);
 
 		List<Purchase> purchases = repository.findAll();
-		ModelAndView mv = new ModelAndView("orders/list", "orders",
+		ModelAndView mv = new ModelAndView("purchases/list", "purchases",
 				purchases);
-		mv.addObject("globalMessage", "Order successfully removed");
+		mv.addObject("globalMessage", "Purchase successfully removed");
 		
 		return mv;
 	}

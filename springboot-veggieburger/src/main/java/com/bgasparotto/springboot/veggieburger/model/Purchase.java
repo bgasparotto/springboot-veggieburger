@@ -40,9 +40,9 @@ public class Purchase {
 	private Double totalValue;
 
 	/**
-	 * Gets the Order's {@code id}.
+	 * Gets the Purchase's {@code id}.
 	 *
-	 * @return The Order's {@code id}
+	 * @return The Purchase's {@code id}
 	 */
 	public Long getId() {
 		return id;
