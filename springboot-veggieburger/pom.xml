@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>springboot-veggieburger</name>
-	<description>Hello World for Spring Boot</description>
+	<description>Veggie Burger Shop with Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -126,6 +126,15 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+			<!-- 
+				JaCoCo for code test coverage. To generate reports, build with:
+				mvn clean jacoco:prepare-agent install jacoco:report
+			-->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
 			</plugin>
 			
 			<!-- Docker Maven Plugin -->
