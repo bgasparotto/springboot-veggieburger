@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+	<item id="1" name="Original Veggie Burger" price="10"/>
+	<item id="2" name="Small Veggie Burger" price="9"/>
+	<item id="3" name="Medium Veggie Burger" price="11"/>
+	<item id="4" name="Big Veggie Burger" price="13"/>
+	<item id="5" name="Family Veggie Burger" price="18"/>
+	<customer id="1" name="Bruno" address="208 Paulista Avenue, Sao Paulo - SP. Brazil"/>
+	<customer id="2" name="John" address="1400 Faria Lima, Sao Paulo - SP. Brazil"/>
+	<customer id="3" name="Rose" address="300 Casa Verde Avenue, Sao Paulo - SP. Brazil"/>
+	<purchase id="1" date="2017-12-01 07:01:01" total_value="30" customer_id="1"/>
+	<purchase id="2" date="2017-12-01 07:02:01" total_value="19" customer_id="1"/>
+	<purchase id="3" date="2017-12-01 07:03:01" total_value="38" customer_id="1"/>
+	<purchase id="4" date="2017-12-01 07:04:01" total_value="10" customer_id="2"/>
+	<purchase id="5" date="2017-12-01 07:05:01" total_value="43" customer_id="2"/>
+	<purchase_items purchase_id="1" items_id="1"/>
+	<purchase_items purchase_id="1" items_id="2"/>
+	<purchase_items purchase_id="1" items_id="3"/>
+	<purchase_items purchase_id="2" items_id="1"/>
+	<purchase_items purchase_id="2" items_id="2"/>
+	<purchase_items purchase_id="3" items_id="1"/>
+	<purchase_items purchase_id="3" items_id="1"/>
+	<purchase_items purchase_id="3" items_id="2"/>
+	<purchase_items purchase_id="3" items_id="2"/>
+	<purchase_items purchase_id="4" items_id="1"/>
+	<purchase_items purchase_id="5" items_id="1"/>
+	<purchase_items purchase_id="5" items_id="2"/>
+	<purchase_items purchase_id="5" items_id="3"/>
+	<purchase_items purchase_id="5" items_id="4"/>
+</dataset>
