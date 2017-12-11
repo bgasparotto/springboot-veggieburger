@@ -27,7 +27,7 @@ public class Item {
 	private String name;
 
 	@NotNull
-	@Min(value = 20,
+	@Min(value = 1,
 			message = "Item's price must be equal or greater than {value}")
 	private Double price;
 
