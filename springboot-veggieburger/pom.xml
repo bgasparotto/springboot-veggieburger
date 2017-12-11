@@ -94,6 +94,23 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<!-- DbUnit -->
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>2.5.0</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Spring and DbUnit integration -->
+		<dependency>
+			<groupId>com.github.springtestdbunit</groupId>
+			<artifactId>spring-test-dbunit</artifactId>
+			<version>1.2.0</version>
+			<scope>test</scope>
+		</dependency>
+		
 		<!-- DevTools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
