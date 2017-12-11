@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.PreRemove;
 import javax.validation.constraints.Min;
 
 import org.hibernate.annotations.Cascade;
@@ -38,6 +39,11 @@ public class Purchase {
 
 	@Min(1)
 	private Double totalValue;
+
+	@PreRemove
+	private void onPreRemove() {
+		customer.getPurchases().removeIf(p -> p.getId() == id);
+	}
 
 	/**
 	 * Gets the Purchase's {@code id}.
@@ -139,10 +145,10 @@ public class Purchase {
 		StringBuilder builder = new StringBuilder();
 		builder.append("[id=");
 		builder.append(id);
-//		builder.append(", customer=");
-//		builder.append(customer);
-//		builder.append(", items=");
-//		builder.append(items);
+		// builder.append(", customer=");
+		// builder.append(customer);
+		// builder.append(", items=");
+		// builder.append(items);
 		builder.append(", date=");
 		builder.append(date);
 		builder.append(", totalValue=");
