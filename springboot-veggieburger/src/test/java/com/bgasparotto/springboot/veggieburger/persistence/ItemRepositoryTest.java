@@ -15,8 +15,8 @@ public class ItemRepositoryTest extends JpaRepositoryTest<Item, Long> {
 	@Override
 	protected Item getUnpersistedEntity() {
 		Item item = new Item();
-		item.setName("New Veggie Dog");
-		item.setPrice(99.0);
+		item.setName("New Veggie Burger");
+		item.setPrice(20.0);
 		
 		return item;
 	}
@@ -27,7 +27,7 @@ public class ItemRepositoryTest extends JpaRepositoryTest<Item, Long> {
 	}
 
 	@Override
-	protected Long getUNonexistentEntityId() {
+	protected Long getNonExistentEntityId() {
 		return 6L;
 	}
 }

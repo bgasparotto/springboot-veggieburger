@@ -29,7 +29,7 @@ public class PurchaseRepositoryTest extends JpaRepositoryTest<Purchase, Long> {
 	}
 
 	@Override
-	protected Long getUNonexistentEntityId() {
+	protected Long getNonExistentEntityId() {
 		return 6L;
 	}
 }

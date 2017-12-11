@@ -20,6 +20,54 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 
+/**
+ * <p>
+ * Abstract class containing basic tests for entities that are persisted through
+ * a {@link JpaRepository}.
+ * </p>
+ * <p>
+ * This abstraction can be used by JPA entities that have a {@code id} column
+ * annotated with <strong>{@code javax.persistence.Id}</strong>. So far it has
+ * been tested with id types of {@code Long}, but it might work as well with
+ * other id types.
+ * </p>
+ * <p>
+ * An example usage of this class for a given entity {@code Item} with an id of
+ * type {@code Long}, containing five records on the testing database where none
+ * of them have the id {@code 6} is given as follows:
+ * </p>
+ * <pre>
+ * public class ItemRepositoryTest extends JpaRepositoryTest&lt;Item, Long&gt; {
+ * 
+ * 	public ItemRepositoryTest() {
+ * 		super(Item::getId, Item::setId); //Id getter and setter
+ * 	}
+ * 
+ * 	{@code @Override}
+ * 	protected Item getUnpersistedEntity() {
+ * 		return new Item("New Veggie Burger", 20,0);
+ * 	}
+ * 
+ * 	{@code @Override}
+ * 	protected Long getExistentEntityId() {
+ * 		return 5L;
+ * 	}
+ * 
+ * 	{@code @Override}
+ * 	protected Long getNonExistentEntityId() {
+ * 		return 6L;
+ * 	}
+ * }
+ * </pre>
+ * 
+ * @author Bruno Gasparotto
+ *
+ * @param <T>
+ *            The domain type the repository manages (your entity class)
+ * @param <U>
+ *            The type of the id of the entity the repository manages (your
+ *            entity's id class)
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestExecutionListeners({
@@ -28,44 +76,75 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 @DatabaseSetup("/dbunit/dbunit-test-db.xml")
 public abstract class JpaRepositoryTest<T, U extends Serializable> {
 	
-	private Function<? super T, ? extends U> idExtractor;
-	private BiConsumer<? super T, ? super U> idConsumer;
+	private Function<? super T, ? extends U> getterMethod;
+	private BiConsumer<? super T, ? super U> setterMethod;
 
 	@Autowired
 	protected JpaRepository<T, U> repository;
 	
+	/**
+	 * 
+	 * Constructor.
+	 *
+	 * @param getterMethod
+	 *            The getter method for the {@code id}. E.g. {@code Item::getId}
+	 * @param setterMethod
+	 *            The setter method for the {@code id}. E.g. {@code Item::setId}
+	 */
 	public JpaRepositoryTest(
-			Function<? super T, ? extends U> idExtractor,
-			BiConsumer<? super T, ? super U> idConsumer) {
+			Function<? super T, ? extends U> getterMethod,
+			BiConsumer<? super T, ? super U> setterMethod) {
 		
-		this.idExtractor = idExtractor;
-		this.idConsumer = idConsumer;
+		this.getterMethod = getterMethod;
+		this.setterMethod = setterMethod;
 	}
 
 	/**
-	 * Provide an {@code id} of an existent entity on database.
+	 * <p>
+	 * Provide an {@code id} of an <strong>existent</strong> entity on the
+	 * testing database.
+	 * </p>
+	 * <p>
+	 * It's important that the provided {@code id} <strong>belongs to an entity
+	 * that is allowed to be removed without provoking any foreign key
+	 * constraint violations</strong>, otherwise, the tests relying on the given
+	 * {@code id} are likely to fail.
+	 * </p>
 	 * 
 	 * @return {@code Id} of an existent entity
 	 */
 	protected abstract U getExistentEntityId();
 	
 	/**
-	 * Provide an {@code id} of a nonexistent entity on database.
+	 * <p>
+	 * Provide an {@code id} of a nonexistent entity on database, in other
+	 * words, an {@code id} that hasn't yet used for an entity of the same type
+	 * on the database.
+	 * </p>
 	 * 
 	 * @return {@code Id} of a nonexistent entity
 	 */
-	protected abstract U getUNonexistentEntityId();
+	protected abstract U getNonExistentEntityId();
 
 	/**
-	 * Provide an entity inexistent on the persistence context.
+	 * <p>
+	 * Provide an entity inexistent on the database, which means that its
+	 * {@code id} is not present on the database.
+	 * </p>
+	 * <p>
+	 * The other fields are allowed to have repeated values like those already
+	 * present on the database, as long as they don't belong to any column with
+	 * {@code UNIQUE} restriction.
+	 * </p>
 	 * 
 	 * @return Entity inexistent on the persistence context
 	 */
 	protected abstract T getUnpersistedEntity();
 
 	/**
-	 * Provide a expected number of records of the the testing entity on
-	 * database. The default is <strong>5</strong>.
+	 * Provide an expected number of records of the the testing entity on
+	 * database. The default value is <strong>5</strong>, override this method
+	 * to change this value.
 	 * 
 	 * @return Expected number of records
 	 */
@@ -79,7 +158,7 @@ public abstract class JpaRepositoryTest<T, U extends Serializable> {
 
 		T entity = repository.findOne(id);
 		Assert.assertNotNull(entity);
-		Assert.assertEquals(id.toString(), idExtractor.apply(entity).toString());
+		Assert.assertEquals(id.toString(), getterMethod.apply(entity).toString());
 	}
 
 	@Test(expected = InvalidDataAccessApiUsageException.class)
@@ -90,7 +169,7 @@ public abstract class JpaRepositoryTest<T, U extends Serializable> {
 
 	@Test
 	public final void shouldReturnNullForNonExistingPositiveId() {
-		U nonExistingId = getUNonexistentEntityId();
+		U nonExistingId = getNonExistentEntityId();
 
 		T entity = repository.findOne(nonExistingId);
 		Assert.assertNull(entity);
@@ -105,11 +184,11 @@ public abstract class JpaRepositoryTest<T, U extends Serializable> {
 	@Test
 	public final void shouldSave() {
 		T entity = getUnpersistedEntity();
-		idConsumer.accept(entity, null);
+		setterMethod.accept(entity, null);
 
 		T savedEntity = repository.save(entity);
 		Assert.assertNotNull(savedEntity);
-		Assert.assertNotNull(idExtractor.apply(entity));
+		Assert.assertNotNull(getterMethod.apply(entity));
 	}
 	
 	@Test(expected = InvalidDataAccessApiUsageException.class)
@@ -121,11 +200,11 @@ public abstract class JpaRepositoryTest<T, U extends Serializable> {
 	@Test
 	public final void shouldSaveEntityWithNotNullNonExistingId() {
 		T entity = getUnpersistedEntity();
-		U nonExistingId = getUNonexistentEntityId();
-		idConsumer.accept(entity, nonExistingId);
+		U nonExistingId = getNonExistentEntityId();
+		setterMethod.accept(entity, nonExistingId);
 
 		T savedEntity = repository.save(entity);
-		Assert.assertEquals(nonExistingId, idExtractor.apply(savedEntity));
+		Assert.assertEquals(nonExistingId, getterMethod.apply(savedEntity));
 	}
 
 	@Test
@@ -146,6 +225,6 @@ public abstract class JpaRepositoryTest<T, U extends Serializable> {
 	
 	@Test(expected = EmptyResultDataAccessException.class)
 	public final void shouldThrowExceptionWhenDeleteNonExistingId() {
-		repository.delete(getUNonexistentEntityId());
+		repository.delete(getNonExistentEntityId());
 	}
 }

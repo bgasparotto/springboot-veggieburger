@@ -4,6 +4,10 @@ import com.bgasparotto.springboot.veggieburger.model.Customer;
 
 public class CustomerRepositoryTest extends JpaRepositoryTest<Customer, Long> {
 	
+	/**
+	 * Constructor.
+	 *
+	 */
 	public CustomerRepositoryTest() {
 		super(Customer::getId, Customer::setId);
 	}
@@ -28,7 +32,7 @@ public class CustomerRepositoryTest extends JpaRepositoryTest<Customer, Long> {
 	}
 
 	@Override
-	protected Long getUNonexistentEntityId() {
+	protected Long getNonExistentEntityId() {
 		return 4L;
 	}
 }
