@@ -46,10 +46,22 @@
 			<artifactId>spring-data-rest-hal-browser</artifactId>
 		</dependency>
 		
-		<!-- Spring Boot Starter Web MVC -->
+		<!-- Spring Boot Starter Web MVC excluding Tomcat -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- Jetty instead of Tomcat -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
 		</dependency>
 		
 		<!-- Thymeleaf for front-end templates -->
