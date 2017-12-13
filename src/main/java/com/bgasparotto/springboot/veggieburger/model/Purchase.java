@@ -1,5 +1,6 @@
 package com.bgasparotto.springboot.veggieburger.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class Purchase {
 	private Date date;
 
 	@Min(1)
-	private Double totalValue;
+	private BigDecimal totalValue;
 
 	@PreRemove
 	private void onPreRemove() {
@@ -86,7 +87,7 @@ public class Purchase {
 	 *
 	 * @return The Purchase's {@code totalValue}
 	 */
-	public Double getTotalValue() {
+	public BigDecimal getTotalValue() {
 		return totalValue;
 	}
 
@@ -136,7 +137,7 @@ public class Purchase {
 	 * @param totalValue
 	 *            The Purchase's {@code totalValue} to set
 	 */
-	public void setTotalValue(Double totalValue) {
+	public void setTotalValue(BigDecimal totalValue) {
 		this.totalValue = totalValue;
 	}
 

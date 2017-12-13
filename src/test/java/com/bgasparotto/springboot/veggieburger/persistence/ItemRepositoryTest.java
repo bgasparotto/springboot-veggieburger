@@ -1,5 +1,7 @@
 package com.bgasparotto.springboot.veggieburger.persistence;
 
+import java.math.BigDecimal;
+
 import com.bgasparotto.springboot.veggieburger.model.Item;
 
 public class ItemRepositoryTest extends JpaRepositoryTest<Item, Long> {
@@ -16,7 +18,7 @@ public class ItemRepositoryTest extends JpaRepositoryTest<Item, Long> {
 	protected Item getUnpersistedEntity() {
 		Item item = new Item();
 		item.setName("New Veggie Burger");
-		item.setPrice(20.0);
+		item.setPrice(new BigDecimal(20));
 		
 		return item;
 	}

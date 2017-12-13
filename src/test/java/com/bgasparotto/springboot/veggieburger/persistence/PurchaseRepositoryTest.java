@@ -1,5 +1,6 @@
 package com.bgasparotto.springboot.veggieburger.persistence;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import com.bgasparotto.springboot.veggieburger.model.Purchase;
@@ -23,7 +24,7 @@ public class PurchaseRepositoryTest extends JpaRepositoryTest<Purchase, Long> {
 	protected Purchase getUnpersistedEntity() {
 		Purchase purchase = new Purchase();
 		purchase.setDate(new Date());
-		purchase.setTotalValue(100.0);
+		purchase.setTotalValue(new BigDecimal(100));
 		
 		return purchase;
 	}

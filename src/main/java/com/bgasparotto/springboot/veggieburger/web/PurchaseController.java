@@ -1,5 +1,6 @@
 package com.bgasparotto.springboot.veggieburger.web;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,10 +80,11 @@ public class PurchaseController {
 		}
 		
 		/* Calculates the total value. */
-		Double totalValue = 0.0;
+		BigDecimal totalValue = BigDecimal.ZERO;
 		List<Item> items = purchase.getItems();
 		for (Item item : items) {
-			totalValue += item.getPrice();
+			BigDecimal price = item.getPrice();
+			totalValue.add(price);
 		}
 		purchase.setTotalValue(totalValue);
 

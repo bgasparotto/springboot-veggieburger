@@ -1,5 +1,7 @@
 package com.bgasparotto.springboot.veggieburger.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +31,7 @@ public class Item {
 	@NotNull
 	@Min(value = 1,
 			message = "Item's price must be equal or greater than {value}")
-	private Double price;
+	private BigDecimal price;
 
 	/**
 	 * Gets the Item's {@code id}.
@@ -54,7 +56,7 @@ public class Item {
 	 *
 	 * @return The Item's {@code price}
 	 */
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
@@ -84,7 +86,7 @@ public class Item {
 	 * @param price
 	 *            The Item's {@code price} to set
 	 */
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
