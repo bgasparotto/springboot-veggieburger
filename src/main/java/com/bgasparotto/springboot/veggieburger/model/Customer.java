@@ -1,6 +1,8 @@
 package com.bgasparotto.springboot.veggieburger.model;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +17,8 @@ import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.Length;
 
 /**
+ * Entity that represents a customer of the system.
+ * 
  * @author Bruno Gasparotto
  *
  */
@@ -39,7 +43,92 @@ public class Customer {
 
 	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
 	@Cascade(CascadeType.ALL)
-	private List<Purchase> purchases;
+	private Set<Purchase> purchases;
+
+	/**
+	 * <p>
+	 * Constructor.
+	 * </p>
+	 * 
+	 * <p>
+	 * Initialises an object using system default values for its attributes and
+	 * {@code null} for its {@code id}.
+	 * </p>
+	 * 
+	 * <p>
+	 * Consider using the constructors that receive parameters instead.
+	 * </p>
+	 */
+	public Customer() {
+		this(null, null);
+	}
+
+	/**
+	 * <p>
+	 * Constructor.
+	 * </p>
+	 * 
+	 * <p>
+	 * Initialises an object populating its attributes using the given
+	 * parameters.
+	 * </p>
+	 *
+	 * @param name
+	 *            The Customer's {@code name}
+	 * @param address
+	 *            The Customer's {@code address}
+	 */
+	public Customer(String name, String address) {
+		this(null, name, address);
+	}
+
+	/**
+	 * <p>
+	 * Constructor.
+	 * </p>
+	 * 
+	 * <p>
+	 * Initialises an object populating its attributes using the given
+	 * parameters.
+	 * </p>
+	 *
+	 * @param id
+	 *            The Customer's {@code id}
+	 * @param name
+	 *            The Customer's {@code name}
+	 * @param address
+	 *            The Customer's {@code address}
+	 */
+	public Customer(Long id, String name, String address) {
+		this(id, name, address, new HashSet<Purchase>());
+	}
+
+	/**
+	 * <p>
+	 * Constructor.
+	 * </p>
+	 * 
+	 * <p>
+	 * Initialises an object populating its attributes using the given
+	 * parameters.
+	 * </p>
+	 *
+	 * @param id
+	 *            The Customer's {@code id}
+	 * @param name
+	 *            The Customer's {@code name}
+	 * @param address
+	 *            The Customer's {@code address}
+	 * @param purchases
+	 *            The Customer's {@code purchases}
+	 */
+	public Customer(Long id, String name, String address,
+			Set<Purchase> purchases) {
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.purchases = purchases;
+	}
 
 	/**
 	 * Gets the Customer's {@code id}.
@@ -73,7 +162,7 @@ public class Customer {
 	 *
 	 * @return The Customer's {@code purchases}
 	 */
-	public List<Purchase> getPurchases() {
+	public Set<Purchase> getPurchases() {
 		return purchases;
 	}
 
@@ -113,8 +202,9 @@ public class Customer {
 	 * @param purchases
 	 *            The Customer's {@code purchases} to set
 	 */
-	public void setPurchases(List<Purchase> purchases) {
-		this.purchases = purchases;
+	public void setPurchases(Set<Purchase> purchases) {
+		this.purchases.clear();
+		this.purchases.addAll(purchases);
 	}
 
 	@Override
@@ -127,7 +217,9 @@ public class Customer {
 		builder.append(", address=");
 		builder.append(address);
 		builder.append(", purchases=");
-		builder.append(purchases);
+		builder.append(Optional.ofNullable(purchases)
+				.map(Set::size)
+				.orElse(null));
 		builder.append("]");
 		return builder.toString();
 	}

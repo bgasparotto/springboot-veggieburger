@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 /**
+ * Entity that represents an item of the system.
+ * 
  * @author Bruno Gasparotto
  *
  */
@@ -32,6 +34,66 @@ public class Item {
 	@Min(value = 1,
 			message = "Item's price must be equal or greater than {value}")
 	private BigDecimal price;
+
+	/**
+	 * <p>
+	 * Constructor.
+	 * </p>
+	 * 
+	 * <p>
+	 * Initialises an object using system default values for its attributes and
+	 * {@code null} for its {@code id}.
+	 * </p>
+	 * 
+	 * <p>
+	 * Consider using the constructors that receive parameters instead.
+	 * </p>
+	 */
+	public Item() {
+		this(null, null);
+	}
+
+	/**
+	 * <p>
+	 * Constructor.
+	 * </p>
+	 * 
+	 * <p>
+	 * Initialises an object populating its attributes using the given
+	 * parameters.
+	 * </p>
+	 *
+	 * @param name
+	 *            The Item's {@code name}
+	 * @param price
+	 *            The Item's {@code price}
+	 */
+	public Item(String name, BigDecimal price) {
+		this(null, null, null);
+	}
+
+	/**
+	 * <p>
+	 * Constructor.
+	 * </p>
+	 * 
+	 * <p>
+	 * Initialises an object populating its attributes using the given
+	 * parameters.
+	 * </p>
+	 *
+	 * @param id
+	 *            The Item's {@code id}
+	 * @param name
+	 *            The Item's {@code name}
+	 * @param price
+	 *            The Item's {@code price}
+	 */
+	public Item(Long id, String name, BigDecimal price) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+	}
 
 	/**
 	 * Gets the Item's {@code id}.

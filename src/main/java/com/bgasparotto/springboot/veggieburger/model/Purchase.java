@@ -1,6 +1,7 @@
 package com.bgasparotto.springboot.veggieburger.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,8 @@ import org.hibernate.annotations.CascadeType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
+ * Entity that represents a purchase of the system.
+ * 
  * @author Bruno Gasparotto
  *
  */
@@ -40,6 +43,81 @@ public class Purchase {
 
 	@Min(1)
 	private BigDecimal totalValue;
+
+	/**
+	 * <p>
+	 * Constructor.
+	 * </p>
+	 * 
+	 * <p>
+	 * Initialises an object using system default values for its attributes and
+	 * {@code null} for its {@code id}.
+	 * </p>
+	 * 
+	 * <p>
+	 * Consider using the constructors that receive parameters instead.
+	 * </p>
+	 */
+	public Purchase() {
+		this(null, new ArrayList<Item>(), null, null);
+	}
+
+	/**
+	 * <p>
+	 * Constructor.
+	 * </p>
+	 * 
+	 * <p>
+	 * Initialises an object populating its attributes using the given
+	 * parameters.
+	 * </p>
+	 *
+	 * @param customer
+	 *            The Purchase's {@code customer}
+	 * @param items
+	 *            The Purchase's {@code items}
+	 * @param date
+	 *            The Purchase's {@code date}
+	 * @param totalValue
+	 *            The Purchase's {@code totalValue}
+	 */
+	public Purchase(Customer customer, List<Item> items, Date date,
+			BigDecimal totalValue) {
+		this.customer = customer;
+		this.items = items;
+		this.date = date;
+		this.totalValue = totalValue;
+	}
+
+	/**
+	 * <p>
+	 * Constructor.
+	 * </p>
+	 * 
+	 * <p>
+	 * Initialises an object populating its attributes using the given
+	 * parameters.
+	 * </p>
+	 *
+	 * @param id
+	 *            The Purchase's {@code id}
+	 * @param customer
+	 *            The Purchase's {@code customer}
+	 * @param items
+	 *            The Purchase's {@code items}
+	 * @param date
+	 *            The Purchase's {@code date}
+	 * @param totalValue
+	 *            The Purchase's {@code totalValue}
+	 */
+	public Purchase(Long id, Customer customer, List<Item> items, Date date,
+			BigDecimal totalValue) {
+		this.id = id;
+		this.customer = customer;
+		this.items = items;
+		this.date = date;
+		this.totalValue = totalValue;
+	}
 
 	@PreRemove
 	private void onPreRemove() {
@@ -118,7 +196,8 @@ public class Purchase {
 	 *            The Purchase's {@code items} to set
 	 */
 	public void setItems(List<Item> items) {
-		this.items = items;
+		this.items.clear();
+		this.items.addAll(items);
 	}
 
 	/**
