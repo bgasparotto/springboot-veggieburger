@@ -84,7 +84,7 @@ public class PurchaseController {
 		List<Item> items = purchase.getItems();
 		for (Item item : items) {
 			BigDecimal price = item.getPrice();
-			totalValue.add(price);
+			totalValue = totalValue.add(price);
 		}
 		purchase.setTotalValue(totalValue);
 
