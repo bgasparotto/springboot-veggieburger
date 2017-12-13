@@ -1,6 +1,5 @@
 package com.bgasparotto.springboot.veggieburger.web;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +24,7 @@ import com.bgasparotto.springboot.veggieburger.model.Purchase;
 import com.bgasparotto.springboot.veggieburger.persistence.CustomerRepository;
 import com.bgasparotto.springboot.veggieburger.persistence.ItemRepository;
 import com.bgasparotto.springboot.veggieburger.persistence.PurchaseRepository;
+import com.bgasparotto.springboot.veggieburger.service.PurchaseService;
 
 /**
  * @author Bruno Gasparotto
@@ -42,6 +42,8 @@ public class PurchaseController {
 	
 	@Autowired
 	private ItemRepository itemRepository;
+	
+	@Autowired PurchaseService service;
 
 	@GetMapping
 	public ModelAndView list() {
@@ -78,18 +80,9 @@ public class PurchaseController {
 
 			return new ModelAndView(viewName, modelName, modelObject);
 		}
-		
-		/* Calculates the total value. */
-		BigDecimal totalValue = BigDecimal.ZERO;
-		List<Item> items = purchase.getItems();
-		for (Item item : items) {
-			BigDecimal price = item.getPrice();
-			totalValue = totalValue.add(price);
-		}
-		purchase.setTotalValue(totalValue);
 
 		/* Save the new purchase. */
-		purchase = repository.save(purchase);
+		purchase = service.create(purchase);
 		String message = "Purchase successfully saved";
 		redirect.addFlashAttribute("globalMessage", message);
 
