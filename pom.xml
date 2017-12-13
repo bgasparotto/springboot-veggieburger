@@ -82,6 +82,12 @@
 			<artifactId>h2</artifactId>
 		</dependency>
 		
+		<!-- MySQL database -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		
 		<!-- WebJars for Bootstrap and JQuery. -->
 		<dependency>
 			<groupId>org.webjars</groupId>
