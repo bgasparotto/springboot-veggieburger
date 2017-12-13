@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -225,10 +226,10 @@ public class Purchase {
 		StringBuilder builder = new StringBuilder();
 		builder.append("[id=");
 		builder.append(id);
-		// builder.append(", customer=");
-		// builder.append(customer);
-		// builder.append(", items=");
-		// builder.append(items);
+		builder.append(", customer=");
+		builder.append(customer);
+		builder.append(", items=");
+		builder.append(Optional.ofNullable(items).map(List::size).orElse(null));
 		builder.append(", date=");
 		builder.append(date);
 		builder.append(", totalValue=");
