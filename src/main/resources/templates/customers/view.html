@@ -7,36 +7,38 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 </head>
 <body>
-	<h1 layout:fragment="header">Customer</h1>
-	<div layout:fragment="content" class="well">
-		<a href="form.html" th:href="@{/customers/new}">New customer</a>
-		<div class="alert alert-success" 
-			th:if="${globalMessage}" th:text="${globalMessage}">
-			Customer created.
-		</div>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Name</th>
-					<th>Address</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td id="id" th:text="${customer.id}">123</td>
-					<td id="nome" th:text="${customer.name}">Name</td>
-					<td id="endereco" th:text="${customer.address}">Address</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<div class="pull-left">
-			<a href="form.html" th:href="@{'/customers/modify/'+
-			${customer.id}}">Modify</a>
-			| <a href="customers" th:href="@{'/customers/remove/'+
-			${customer.id}}">Remove</a>
-			| <a th:href="@{/customers/}" href="list.html">Go back</a>
+	<div layout:fragment="content">
+		<div class="jumbotron">
+			<h2>Customer</h2>
+			<a href="form.html" th:href="@{/customers/new}">New customer</a>
+			<div class="alert alert-success" 
+				th:if="${globalMessage}" th:text="${globalMessage}">
+				Customer created.
+			</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Address</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="id" th:text="${customer.id}">123</td>
+						<td id="nome" th:text="${customer.name}">Name</td>
+						<td id="endereco" th:text="${customer.address}">Address</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<div class="pull-left">
+				<a href="form.html" th:href="@{'/customers/modify/'+
+				${customer.id}}">Modify</a>
+				| <a href="customers" th:href="@{'/customers/remove/'+
+				${customer.id}}">Remove</a>
+				| <a th:href="@{/customers/}" href="list.html">Go back</a>
+			</div>
 		</div>
 	</div>
 </body>

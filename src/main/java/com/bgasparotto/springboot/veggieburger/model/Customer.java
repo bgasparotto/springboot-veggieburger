@@ -32,13 +32,13 @@ public class Customer {
 	@NotNull
 	@Length(min = 2,
 			max = 30,
-			message = "Customer's name length must be between {min} and {max}")
+			message = "Name length must be between {min} and {max}")
 	private String name;
 
 	@NotNull
 	@Length(min = 2,
 			max = 300,
-			message = "Customer's name length must be between {min} and {max}")
+			message = "Address length must be between {min} and {max}")
 	private String address;
 
 	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
