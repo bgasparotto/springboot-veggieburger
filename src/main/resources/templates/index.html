@@ -9,12 +9,33 @@
 	<div layout:fragment="content">
 		<div class="jumbotron">
 			<h2>Veggie Burger <small>Control Panel</small></h2>
-			<a th:href="@{/customers}" class="btn btn-lg btn-primary">Customers</a>
-			<a th:href="@{/items}" class="btn btn-lg btn-primary">Items</a>
-			<a th:href="@{/purchases}" class="btn btn-lg btn-primary">Purchases</a>
-			<a th:href="@{/environment}" class="btn btn-lg btn-info">Environment</a>
-			<a th:href="@{/h2}" class="btn btn-lg btn-info">H2 Console</a>
-			<a th:href="@{/api}" class="btn btn-lg btn-info">REST Browser</a>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Resources</h3>
+						</div>
+						<div class="panel-body">
+							<a th:href="@{/customers}" class="btn btn-primary col-md-4 col-sm-4 col-xs-12">Customers</a>
+							<a th:href="@{/items}" class="btn btn-primary col-md-4 col-sm-4 col-xs-12">Items</a>
+							<a th:href="@{/purchases}" class="btn btn-primary col-md-4 col-sm-4 col-xs-12">Purchases</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Setup</h3>
+						</div>
+						<div class="panel-body">
+							<a th:href="@{/environment}" class="btn btn-info col-md-4 col-sm-4 col-xs-12">Environment</a>
+							<a th:href="@{/h2}" class="btn btn-info col-md-4 col-sm-4 col-xs-12">H2 Console</a>
+							<a th:href="@{/api}" class="btn btn-info col-md-4 col-sm-4 col-xs-12">REST Browser</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

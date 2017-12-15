@@ -2,6 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <!-- 
+	    	The above 3 meta tags *must* come first in the head; any other head
+	    	content must come *after* these tags 
+	    -->
+	
 		<title>Veggie Burger Delivery</title>
 		
 		<!--  JQuery -->
@@ -21,8 +29,8 @@
 			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 			
 		<!-- Bootstrap starter theme -->
-		<link rel="stylesheet"th:href="@{/css/bootstrap-starter-template.css}"
-			href="../static/css/bootstrap-starter-template.css">
+		<link rel="stylesheet"th:href="@{/css/bootstrap-theme.css}"
+			href="../static/css/bootstrap-theme.css">
 	</head>
 	
 	<body>
@@ -51,7 +59,7 @@
 			</div>
 		</nav>
 		
-		<div class="container" layout:fragment="content"></div>
+		<div class="container" layout:fragment="content" role="main"></div>
 		
 	</body>
 </html>
