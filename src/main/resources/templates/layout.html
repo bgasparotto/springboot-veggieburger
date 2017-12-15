@@ -19,25 +19,39 @@
 			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 		<script	th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"
 			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			
+		<!-- Bootstrap starter theme -->
+		<link rel="stylesheet"th:href="@{/css/bootstrap-starter-template.css}"
+			href="../static/css/bootstrap-starter-template.css">
 	</head>
+	
 	<body>
-		<div class="container">
-			<nav class="navbar navbar-default navbar-static-top">
+
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand" th:href="@{/}"><img
-						src="../static/img/veggieburger-logo.png"
-						th:src="@{/img/veggieburger-logo.png}" />
-					</a>
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" th:href="@{/}">Veggie Burger</a>
 				</div>
-				<ul class="nav navbar-nav">
-					<li><a class="brand" href="https://bgasparotto.com">Blog</a></li>
-					<li><a class="brand" href="https://github.com/bgasparotto">GitHub</a></li>
-					<li><a class="brand" href="https://projects.spring.io/spring-boot/">Spring Boot</a></li>
-					<li><a class="brand" href="https://github.com/ultraq/thymeleaf-layout-dialect">Thymeleaf Layout</a></li>
-				</ul>
-			</nav>
-			<h1 layout:fragment="header">Header Template</h1>
-			<div layout:fragment="content">Content Template</div>
-		</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a th:href="@{/}">Home</a></li>
+						<li><a href="https://bgasparotto.com">Blog</a></li>
+						<li><a href="https://github.com/bgasparotto">GitHub</a></li>
+						<li><a href="https://projects.spring.io/spring-boot/">Spring Boot</a></li>
+						<li><a href="https://github.com/ultraq/thymeleaf-layout-dialect">Thymeleaf Layout</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</nav>
+		
+		<div class="container" layout:fragment="content"></div>
+		
 	</body>
 </html>
