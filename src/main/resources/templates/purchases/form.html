@@ -16,53 +16,49 @@
 	</script>
 </head>
 <body>
-	<h1 layout:fragment="header">New purchase</h1>
-	<div layout:fragment="content" class="input-form">
-		<div class="well">
+	<div layout:fragment="content">
+		<div class="jumbotron">
+			<h2>New purchase</h2>
 		
 			<form id="purchaseForm" th:action="@{/purchases/(form)}"
-			th:object="${purchase}" action="#" method="post" class="form-horizontal">
+			th:object="${purchase}" action="#" method="post">
 			
-				<div th:if="${#fields.hasErrors('*')}" class="alert alert-error">
-					<p th:each="error : ${#fields.errors('*')}" th:text="${error}">
-						Validation errors
-					</p>
-				</div>
-				<input type="hidden" th:field="*{id}"
-					th:class="${#fields.hasErrors('id')} ? 'field-error'" />
-				
-				<!-- Customer's name -->
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="name">Name</label>
-					<select class="col-sm-10"  th:field="*{customer}" >
+				<div class="form-group" 
+					th:class="${#fields.hasErrors('customer.name')} ? 
+						'form-group has-error' : 'form-group'">
+					<label for="customerName" class="control-label">Customer's name</label>
+					<select id="customerName" class="form-control" th:field="*{customer}" >
 						<option th:each="customer : ${availableCustomers}" 
 							th:value="${customer.id}" 
 							th:text="${customer.name}" />
-             		</select>
+					</select>
+					<span class="help-block" th:if="${#fields.hasErrors('customer.name')}" 
+						th:text="${#fields.errors('customer.name')}">Name validation error</span>
 				</div>
 				
-				<!-- Purchase's date -->
-				<div class="form-group">  
-					<label class="control-label col-sm-2" for="text">Date</label>
-					<input class="col-sm-10" type="text" id="date" th:field="*{date}" 
-						th:class="${#fields.hasErrors('date')} ? 'field-error'"/>
+				<div class="form-group" 
+					th:class="${#fields.hasErrors('date')} ? 
+						'form-group has-error' : 'form-group'">
+					<label for="date" class="control-label">Date</label>
+					<input id="date" class="form-control" type="text" th:field="*{date}" />
+					<span class="help-block" th:if="${#fields.hasErrors('date')}" 
+						th:text="${#fields.errors('date')}">Date validation error</span>
 				</div>
 				
-				<!-- Purchase's items -->
-				<div class="form-group">  
-					<label class="control-label col-sm-2" for="text">Items</label>
-					<select id="itemsList" multiple="multiple" 
-						th:field="*{items}" name="itemsListId">
+				<div class="form-group" 
+					th:class="${#fields.hasErrors('items')} ? 
+						'form-group has-error' : 'form-group'">
+					<label for="itemsList" class="control-label">Items</label>
+					<select id="itemsList" class="form-control" multiple="multiple" 
+						th:field="*{items}" name="itemsList" size="5">
 						<option th:each="item : ${availableItems}" 
 							th:value="${{item}}" th:text="${item.name}" />
 					</select>
+					<span class="help-block" th:if="${#fields.hasErrors('items')}" 
+						th:text="${#fields.errors('items')}">Items validation error</span>
 				</div>
 				
-				<div class="col-sm-offset-2 col-sm-10">
-					<input type="submit" value="Save" />
-				</div>
-				<br/>
-				
+				<input type="submit" class="btn btn-default" value="Save" />
 				<a th:href="@{/purchases/}" href="purchases.html">Go back</a>
 				
 			</form>

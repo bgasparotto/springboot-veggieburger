@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PreRemove;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -39,6 +40,7 @@ public class Purchase {
 	@Cascade(CascadeType.MERGE)
 	private List<Item> items;
 
+	@NotNull(message="Date must be set")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date date;
 
