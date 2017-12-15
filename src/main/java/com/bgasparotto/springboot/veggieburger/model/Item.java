@@ -27,10 +27,10 @@ public class Item {
 	@NotNull
 	@Length(min = 2,
 			max = 30,
-			message = "Item's name length must be between {min} and {max}")
+			message = "Name length must be between {min} and {max}")
 	private String name;
 
-	@NotNull
+	@NotNull(message = "Price must be set")
 	@Min(value = 1,
 			message = "Item's price must be equal or greater than {value}")
 	private BigDecimal price;
