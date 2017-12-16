@@ -6,8 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Length;
+import javax.validation.constraints.Size;
 
 /**
  * Entity that represents an address of the system.
@@ -22,30 +21,27 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
-	@Length(min = 8,
-			max = 128,
-			message = "Adress line 1 length must be between {min} and {max}")
+	@Size(min = 8,
+		  max = 128,
+		  message = "Adress line 1 size must be between {min} and {max}")
 	private String addressLine1;
 	
+	@Size(max = 128, message = "Maximum adress line 2 size is {max}")
 	private String addressLine2;
 	
-	@NotNull
-	@Length(min = 2,
-			max = 16,
-			message = "Post code length must be between {min} and {max}")
+	@Size(min = 2,
+		  max = 16,
+		  message = "Post code size must be between {min} and {max}")
 	private String postCode;
 	
-	@NotNull
-	@Length(min = 2,
-			max = 32,
-			message = "City name length must be between {min} and {max}")
+	@Size(min = 2,
+		  max = 32,
+		  message = "City name size must be between {min} and {max}")
 	private String cityName;
 	
-	@NotNull
-	@Length(min = 2,
-			max = 32,
-			message = "State name length must be between {min} and {max}")
+	@Size(min = 2,
+		  max = 32,
+		  message = "State name length must be between {min} and {max}")
 	private String stateName;
 	
 	@NotNull
