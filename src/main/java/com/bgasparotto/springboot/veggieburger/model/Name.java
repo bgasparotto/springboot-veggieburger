@@ -14,11 +14,10 @@ public class Name {
 
 	@Size(min = 2, 
 		  max = 32,
-		  message = "First name length must be between {min} and {max}")
+		  message = "First name size must be between {min} and {max}")
 	private String firstName;
 	
-	@Size(max = 32,
-		  message = "Maximum last name length is {max}")
+	@Size(max = 32, message = "Maximum last name size is {max}")
 	private String lastName;
 
 	/**

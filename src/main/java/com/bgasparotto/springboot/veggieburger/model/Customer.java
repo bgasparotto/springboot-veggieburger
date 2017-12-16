@@ -13,10 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.validator.constraints.Length;
 
 /**
  * Entity that represents a customer of the system.
@@ -36,9 +36,9 @@ public class Customer {
 	private Name name;
 
 	@NotNull
-	@Length(min = 2,
+	@Size(min = 2,
 			max = 300,
-			message = "Address length must be between {min} and {max}")
+			message = "Address size must be between {min} and {max}")
 	private String address;
 
 	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
