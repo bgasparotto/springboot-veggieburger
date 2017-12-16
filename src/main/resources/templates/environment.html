@@ -7,55 +7,48 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 </head>
 <body>
-	<h1 layout:fragment="header">
-		Environment  <small>Get to know your system</small>
-	</h1>
-	<div layout:fragment="content" class="container">
+	<div layout:fragment="content">
 		<div class="jumbotron">
-			<div>
-				<table>
-					<thead>
-						<tr>
-							<th>Link</th><th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><p><a href="#" th:href="@{/actuator}">actuator</a></p></td>
-							<td><p>List all the available links.</p></td>
-						</tr>
-						<tr>
-							<td><p><a href="#" th:href="@{/dump}">dump</a></p></td>
-							<td><p>Perform a thread dump.</p></td>
-						</tr>
-						<tr>
-							<td><p><a href="#" th:href="@{/env}">env</a></p></td>
-							<td><p>Show Spring environment properties..</p></td>
-						</tr>
-						<tr>
-							<td><p><a href="#" th:href="@{/health}">health</a></p></td>
-							<td><p>Show health check information.</p>
-						</td>
-						</tr>
-						<tr>
-							<td><p><a href="#" th:href="@{/metrics}">metrics</a></p></td>
-							<td><p>Show application metrics</p></td>
-						</tr>
-						<tr>
-							<td><p><a href="#" th:href="@{/mappings}">mappings</a></p></td>
-							<td><p>Show @RequestMapping paths.</p></td>
-						</tr>
-						<tr>
-							<td><p><a href="#" th:href="@{/trace}">trace</a></p></td>
-							<td><p>Show the last 100 HTTP requests.</p></td>
-						</tr>
-					</tbody>
-				</table>
-				<br/>
-				
-				<a href="#" th:href="@{/properties}" 
-					class="btn btn-large btn-success">System Properties</a>
-			</div>
+			<h2>Environment <small>Get to know your system</small></h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Link</th><th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><p><a href="#" th:href="@{/actuator}">actuator</a></p></td>
+						<td><p>List all the available links.</p></td>
+					</tr>
+					<tr>
+						<td><p><a href="#" th:href="@{/dump}">dump</a></p></td>
+						<td><p>Perform a thread dump.</p></td>
+					</tr>
+					<tr>
+						<td><p><a href="#" th:href="@{/env}">env</a></p></td>
+						<td><p>Show Spring environment properties..</p></td>
+					</tr>
+					<tr>
+						<td><p><a href="#" th:href="@{/health}">health</a></p></td>
+						<td><p>Show health check information.</p>
+					</td>
+					</tr>
+					<tr>
+						<td><p><a href="#" th:href="@{/metrics}">metrics</a></p></td>
+						<td><p>Show application metrics</p></td>
+					</tr>
+					<tr>
+						<td><p><a href="#" th:href="@{/mappings}">mappings</a></p></td>
+						<td><p>Show @RequestMapping paths.</p></td>
+					</tr>
+					<tr>
+						<td><p><a href="#" th:href="@{/trace}">trace</a></p></td>
+						<td><p>Show the last 100 HTTP requests.</p></td>
+					</tr>
+				</tbody>
+			</table>
+			<a th:href="@{/}" href="/">Go back</a>
 		</div>
 	</div>
 </body>
