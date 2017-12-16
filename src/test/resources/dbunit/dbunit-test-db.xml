@@ -27,4 +27,249 @@
 	<purchase_items purchase_id="5" items_id="2"/>
 	<purchase_items purchase_id="5" items_id="3"/>
 	<purchase_items purchase_id="5" items_id="4"/>
+	<country id="1" code="AF" name="Afghanistan"/>
+	<country id="2" code="AL" name="Albania"/>
+	<country id="3" code="DZ" name="Algeria"/>
+	<country id="4" code="DS" name="American Samoa"/>
+	<country id="5" code="AD" name="Andorra"/>
+	<country id="6" code="AO" name="Angola"/>
+	<country id="7" code="AI" name="Anguilla"/>
+	<country id="8" code="AQ" name="Antarctica"/>
+	<country id="9" code="AG" name="Antigua and Barbuda"/>
+	<country id="10" code="AR" name="Argentina"/>
+	<country id="11" code="AM" name="Armenia"/>
+	<country id="12" code="AW" name="Aruba"/>
+	<country id="13" code="AU" name="Australia"/>
+	<country id="14" code="AT" name="Austria"/>
+	<country id="15" code="AZ" name="Azerbaijan"/>
+	<country id="16" code="BS" name="Bahamas"/>
+	<country id="17" code="BH" name="Bahrain"/>
+	<country id="18" code="BD" name="Bangladesh"/>
+	<country id="19" code="BB" name="Barbados"/>
+	<country id="20" code="BY" name="Belarus"/>
+	<country id="21" code="BE" name="Belgium"/>
+	<country id="22" code="BZ" name="Belize"/>
+	<country id="23" code="BJ" name="Benin"/>
+	<country id="24" code="BM" name="Bermuda"/>
+	<country id="25" code="BT" name="Bhutan"/>
+	<country id="26" code="BO" name="Bolivia"/>
+	<country id="27" code="BA" name="Bosnia and Herzegovina"/>
+	<country id="28" code="BW" name="Botswana"/>
+	<country id="29" code="BV" name="Bouvet Island"/>
+	<country id="30" code="BR" name="Brazil"/>
+	<country id="31" code="IO" name="British Indian Ocean Territory"/>
+	<country id="32" code="BN" name="Brunei Darussalam"/>
+	<country id="33" code="BG" name="Bulgaria"/>
+	<country id="34" code="BF" name="Burkina Faso"/>
+	<country id="35" code="BI" name="Burundi"/>
+	<country id="36" code="KH" name="Cambodia"/>
+	<country id="37" code="CM" name="Cameroon"/>
+	<country id="38" code="CA" name="Canada"/>
+	<country id="39" code="CV" name="Cape Verde"/>
+	<country id="40" code="KY" name="Cayman Islands"/>
+	<country id="41" code="CF" name="Central African Republic"/>
+	<country id="42" code="TD" name="Chad"/>
+	<country id="43" code="CL" name="Chile"/>
+	<country id="44" code="CN" name="China"/>
+	<country id="45" code="CX" name="Christmas Island"/>
+	<country id="46" code="CC" name="Cocos (Keeling) Islands"/>
+	<country id="47" code="CO" name="Colombia"/>
+	<country id="48" code="KM" name="Comoros"/>
+	<country id="49" code="CG" name="Congo"/>
+	<country id="50" code="CK" name="Cook Islands"/>
+	<country id="51" code="CR" name="Costa Rica"/>
+	<country id="52" code="HR" name="Croatia(Hrvatska)"/>
+	<country id="53" code="CU" name="Cuba"/>
+	<country id="54" code="CY" name="Cyprus"/>
+	<country id="55" code="CZ" name="Czech Republic"/>
+	<country id="56" code="DK" name="Denmark"/>
+	<country id="57" code="DJ" name="Djibouti"/>
+	<country id="58" code="DM" name="Dominica"/>
+	<country id="59" code="DO" name="Dominican Republic"/>
+	<country id="60" code="TP" name="East Timor"/>
+	<country id="61" code="EC" name="Ecuador"/>
+	<country id="62" code="EG" name="Egypt"/>
+	<country id="63" code="SV" name="El Salvador"/>
+	<country id="64" code="GQ" name="Equatorial Guinea"/>
+	<country id="65" code="ER" name="Eritrea"/>
+	<country id="66" code="EE" name="Estonia"/>
+	<country id="67" code="ET" name="Ethiopia"/>
+	<country id="68" code="FK" name="Falkland Islands(Malvinas)"/>
+	<country id="69" code="FO" name="Faroe Islands"/>
+	<country id="70" code="FJ" name="Fiji"/>
+	<country id="71" code="FI" name="Finland"/>
+	<country id="72" code="FR" name="France"/>
+	<country id="73" code="FX" name="France, Metropolitan"/>
+	<country id="74" code="GF" name="French Guiana"/>
+	<country id="75" code="PF" name="French Polynesia"/>
+	<country id="76" code="TF" name="French Southern Territories"/>
+	<country id="77" code="GA" name="Gabon"/>
+	<country id="78" code="GM" name="Gambia"/>
+	<country id="79" code="GE" name="Georgia"/>
+	<country id="80" code="DE" name="Germany"/>
+	<country id="81" code="GH" name="Ghana"/>
+	<country id="82" code="GI" name="Gibraltar"/>
+	<country id="83" code="GK" name="Guernsey"/>
+	<country id="84" code="GR" name="Greece"/>
+	<country id="85" code="GL" name="Greenland"/>
+	<country id="86" code="GD" name="Grenada"/>
+	<country id="87" code="GP" name="Guadeloupe"/>
+	<country id="88" code="GU" name="Guam"/>
+	<country id="89" code="GT" name="Guatemala"/>
+	<country id="90" code="GN" name="Guinea"/>
+	<country id="91" code="GW" name="Guinea-Bissau"/>
+	<country id="92" code="GY" name="Guyana"/>
+	<country id="93" code="HT" name="Haiti"/>
+	<country id="94" code="HM" name="Heard and Mc Donald Islands"/>
+	<country id="95" code="HN" name="Honduras"/>
+	<country id="96" code="HK" name="Hong Kong"/>
+	<country id="97" code="HU" name="Hungary"/>
+	<country id="98" code="IS" name="Iceland"/>
+	<country id="99" code="IN" name="India"/>
+	<country id="100" code="IM" name="Isle of Man"/>
+	<country id="101" code="ID" name="Indonesia"/>
+	<country id="102" code="IR" name="Iran(Islamic Republic of)"/>
+	<country id="103" code="IQ" name="Iraq"/>
+	<country id="104" code="IE" name="Ireland"/>
+	<country id="105" code="IL" name="Israel"/>
+	<country id="106" code="IT" name="Italy"/>
+	<country id="107" code="CI" name="Ivory Coast"/>
+	<country id="108" code="JE" name="Jersey"/>
+	<country id="109" code="JM" name="Jamaica"/>
+	<country id="110" code="JP" name="Japan"/>
+	<country id="111" code="JO" name="Jordan"/>
+	<country id="112" code="KZ" name="Kazakhstan"/>
+	<country id="113" code="KE" name="Kenya"/>
+	<country id="114" code="KI" name="Kiribati"/>
+	<country id="115" code="KP" name="Korea, Democratic People''s Republic of"/>
+	<country id="116" code="KR" name="Korea, Republic of"/>
+	<country id="117" code="XK" name="Kosovo"/>
+	<country id="118" code="KW" name="Kuwait"/>
+	<country id="119" code="KG" name="Kyrgyzstan"/>
+	<country id="120" code="LA" name="Lao People''s Democratic Republic"/>
+	<country id="121" code="LV" name="Latvia"/>
+	<country id="122" code="LB" name="Lebanon"/>
+	<country id="123" code="LS" name="Lesotho"/>
+	<country id="124" code="LR" name="Liberia"/>
+	<country id="125" code="LY" name="Libyan Arab Jamahiriya"/>
+	<country id="126" code="LI" name="Liechtenstein"/>
+	<country id="127" code="LT" name="Lithuania"/>
+	<country id="128" code="LU" name="Luxembourg"/>
+	<country id="129" code="MO" name="Macau"/>
+	<country id="130" code="MK" name="Macedonia"/>
+	<country id="131" code="MG" name="Madagascar"/>
+	<country id="132" code="MW" name="Malawi"/>
+	<country id="133" code="MY" name="Malaysia"/>
+	<country id="134" code="MV" name="Maldives"/>
+	<country id="135" code="ML" name="Mali"/>
+	<country id="136" code="MT" name="Malta"/>
+	<country id="137" code="MH" name="Marshall Islands"/>
+	<country id="138" code="MQ" name="Martinique"/>
+	<country id="139" code="MR" name="Mauritania"/>
+	<country id="140" code="MU" name="Mauritius"/>
+	<country id="141" code="TY" name="Mayotte"/>
+	<country id="142" code="MX" name="Mexico"/>
+	<country id="143" code="FM" name="Micronesia, Federated States of"/>
+	<country id="144" code="MD" name="Moldova, Republic of"/>
+	<country id="145" code="MC" name="Monaco"/>
+	<country id="146" code="MN" name="Mongolia"/>
+	<country id="147" code="ME" name="Montenegro"/>
+	<country id="148" code="MS" name="Montserrat"/>
+	<country id="149" code="MA" name="Morocco"/>
+	<country id="150" code="MZ" name="Mozambique"/>
+	<country id="151" code="MM" name="Myanmar"/>
+	<country id="152" code="NA" name="Namibia"/>
+	<country id="153" code="NR" name="Nauru"/>
+	<country id="154" code="NP" name="Nepal"/>
+	<country id="155" code="NL" name="Netherlands"/>
+	<country id="156" code="AN" name="Netherlands Antilles"/>
+	<country id="157" code="NC" name="New Caledonia"/>
+	<country id="158" code="NZ" name="New Zealand"/>
+	<country id="159" code="NI" name="Nicaragua"/>
+	<country id="160" code="NE" name="Niger"/>
+	<country id="161" code="NG" name="Nigeria"/>
+	<country id="162" code="NU" name="Niue"/>
+	<country id="163" code="NF" name="Norfolk Island"/>
+	<country id="164" code="MP" name="Northern Mariana Islands"/>
+	<country id="165" code="NO" name="Norway"/>
+	<country id="166" code="OM" name="Oman"/>
+	<country id="167" code="PK" name="Pakistan"/>
+	<country id="168" code="PW" name="Palau"/>
+	<country id="169" code="PS" name="Palestine"/>
+	<country id="170" code="PA" name="Panama"/>
+	<country id="171" code="PG" name="Papua New Guinea"/>
+	<country id="172" code="PY" name="Paraguay"/>
+	<country id="173" code="PE" name="Peru"/>
+	<country id="174" code="PH" name="Philippines"/>
+	<country id="175" code="PN" name="Pitcairn"/>
+	<country id="176" code="PL" name="Poland"/>
+	<country id="177" code="PT" name="Portugal"/>
+	<country id="178" code="PR" name="Puerto Rico"/>
+	<country id="179" code="QA" name="Qatar"/>
+	<country id="180" code="RE" name="Reunion"/>
+	<country id="181" code="RO" name="Romania"/>
+	<country id="182" code="RU" name="Russian Federation"/>
+	<country id="183" code="RW" name="Rwanda"/>
+	<country id="184" code="KN" name="Saint Kitts and Nevis"/>
+	<country id="185" code="LC" name="Saint Lucia"/>
+	<country id="186" code="VC" name="Saint Vincent and the Grenadines"/>
+	<country id="187" code="WS" name="Samoa"/>
+	<country id="188" code="SM" name="San Marino"/>
+	<country id="189" code="ST" name="Sao Tome and Principe"/>
+	<country id="190" code="SA" name="Saudi Arabia"/>
+	<country id="191" code="SN" name="Senegal"/>
+	<country id="192" code="RS" name="Serbia"/>
+	<country id="193" code="SC" name="Seychelles"/>
+	<country id="194" code="SL" name="Sierra Leone"/>
+	<country id="195" code="SG" name="Singapore"/>
+	<country id="196" code="SK" name="Slovakia"/>
+	<country id="197" code="SI" name="Slovenia"/>
+	<country id="198" code="SB" name="Solomon Islands"/>
+	<country id="199" code="SO" name="Somalia"/>
+	<country id="200" code="ZA" name="South Africa"/>
+	<country id="201" code="GS" name="South Georgia South Sandwich Islands"/>
+	<country id="202" code="ES" name="Spain"/>
+	<country id="203" code="LK" name="Sri Lanka"/>
+	<country id="204" code="SH" name="St. Helena"/>
+	<country id="205" code="PM" name="St. Pierre and Miquelon"/>
+	<country id="206" code="SD" name="Sudan"/>
+	<country id="207" code="SR" name="Suriname"/>
+	<country id="208" code="SJ" name="Svalbard and Jan Mayen Islands"/>
+	<country id="209" code="SZ" name="Swaziland"/>
+	<country id="210" code="SE" name="Sweden"/>
+	<country id="211" code="CH" name="Switzerland"/>
+	<country id="212" code="SY" name="Syrian Arab Republic"/>
+	<country id="213" code="TW" name="Taiwan"/>
+	<country id="214" code="TJ" name="Tajikistan"/>
+	<country id="215" code="TZ" name="Tanzania, United Republic of"/>
+	<country id="216" code="TH" name="Thailand"/>
+	<country id="217" code="TG" name="Togo"/>
+	<country id="218" code="TK" name="Tokelau"/>
+	<country id="219" code="TO" name="Tonga"/>
+	<country id="220" code="TT" name="Trinidad and Tobago"/>
+	<country id="221" code="TN" name="Tunisia"/>
+	<country id="222" code="TR" name="Turkey"/>
+	<country id="223" code="TM" name="Turkmenistan"/>
+	<country id="224" code="TC" name="Turks and Caicos Islands"/>
+	<country id="225" code="TV" name="Tuvalu"/>
+	<country id="226" code="UG" name="Uganda"/>
+	<country id="227" code="UA" name="Ukraine"/>
+	<country id="228" code="AE" name="United Arab Emirates"/>
+	<country id="229" code="GB" name="United Kingdom"/>
+	<country id="230" code="US" name="United States"/>
+	<country id="231" code="UM" name="United States minor outlying islands"/>
+	<country id="232" code="UY" name="Uruguay"/>
+	<country id="233" code="UZ" name="Uzbekistan"/>
+	<country id="234" code="VU" name="Vanuatu"/>
+	<country id="235" code="VA" name="Vatican City State"/>
+	<country id="236" code="VE" name="Venezuela"/>
+	<country id="237" code="VN" name="Vietnam"/>
+	<country id="238" code="VG" name="Virgin Islands(British)"/>
+	<country id="239" code="VI" name="Virgin Islands(U.S.)"/>
+	<country id="240" code="WF" name="Wallis and Futuna Islands"/>
+	<country id="241" code="EH" name="Western Sahara"/>
+	<country id="242" code="YE" name="Yemen"/>
+	<country id="243" code="ZR" name="Zaire"/>
+	<country id="244" code="ZM" name="Zambia"/>
+	<country id="245" code="ZW" name="Zimbabwe"/>
 </dataset>
