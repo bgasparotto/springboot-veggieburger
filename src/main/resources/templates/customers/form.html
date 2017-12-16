@@ -14,22 +14,28 @@
 			<form id="customerForm" th:action="@{/customers/(form)}"
 				th:object="${customer}" action="#" method="post">
 			
-				<div class="form-group" 
-					th:class="${#fields.hasErrors('name.firstName')} ? 
-						'form-group has-error' : 'form-group'">
-					<label for="first_name" class="control-label">First Name</label>
-					<input id="first_name" class="form-control" type="text" th:field="*{name.firstName}" />
-					<span class="help-block" th:if="${#fields.hasErrors('name.firstName')}" 
-						th:text="${#fields.errors('name.firstName')}">First Name validation error</span>
-				</div>
-				
-				<div class="form-group" 
-					th:class="${#fields.hasErrors('name.lastName')} ? 
-						'form-group has-error' : 'form-group'">
-					<label for="last_name" class="control-label">Last Name</label>
-					<input id="last_name" class="form-control" type="text" th:field="*{name.lastName}" />
-					<span class="help-block" th:if="${#fields.hasErrors('name.lastName')}" 
-						th:text="${#fields.errors('name.lastName')}">Last Name validation error</span>
+				<div class="row">
+					<div class="col-md-6 col-lg-6">
+						<div class="form-group" 
+							th:class="${#fields.hasErrors('name.firstName')} ? 
+								'form-group has-error' : 'form-group'">
+							<label for="first_name" class="control-label">First Name</label>
+							<input id="first_name" class="form-control" type="text" th:field="*{name.firstName}" />
+							<span class="help-block" th:if="${#fields.hasErrors('name.firstName')}" 
+								th:text="${#fields.errors('name.firstName')}">First Name validation error</span>
+						</div>
+					</div>
+					
+					<div class="col-md-6 col-lg-6">
+						<div class="form-group" 
+							th:class="${#fields.hasErrors('name.lastName')} ? 
+								'form-group has-error' : 'form-group'">
+							<label for="last_name" class="control-label">Last Name</label>
+							<input id="last_name" class="form-control" type="text" th:field="*{name.lastName}" />
+							<span class="help-block" th:if="${#fields.hasErrors('name.lastName')}" 
+								th:text="${#fields.errors('name.lastName')}">Last Name validation error</span>
+						</div>
+					</div>
 				</div>
 
 				<div class="form-group" 
