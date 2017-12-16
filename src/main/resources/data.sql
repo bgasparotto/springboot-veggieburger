@@ -8,11 +8,11 @@ VALUES
 (5, 'Family Veggie Burger', 18);
 
 INSERT INTO customer
-(id, name, address)
+(id, first_name, last_name, address)
 VALUES
-(1, 'Bruno', '208 Paulista Avenue, Sao Paulo - SP. Brazil'),
-(2, 'John', '1400 Faria Lima, Sao Paulo - SP. Brazil'),
-(3, 'Rose', '300 Casa Verde Avenue, Sao Paulo - SP. Brazil');
+(1, 'Bruno', 'Gasparotto', '208 Paulista Avenue, Sao Paulo - SP. Brazil'),
+(2, 'John', 'Wick', '1400 Faria Lima, Sao Paulo - SP. Brazil'),
+(3, 'Rose', 'Tyler', '300 Casa Verde Avenue, Sao Paulo - SP. Brazil');
 
 INSERT INTO purchase
 (id, date, total_value, customer_id)

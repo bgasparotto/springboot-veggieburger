@@ -1,6 +1,7 @@
 package com.bgasparotto.springboot.veggieburger.persistence;
 
 import com.bgasparotto.springboot.veggieburger.model.Customer;
+import com.bgasparotto.springboot.veggieburger.model.Name;
 
 public class CustomerRepositoryTest extends JpaRepositoryTest<Customer, Long> {
 	
@@ -20,7 +21,8 @@ public class CustomerRepositoryTest extends JpaRepositoryTest<Customer, Long> {
 	@Override
 	protected Customer getUnpersistedEntity() {
 		Customer customer = new Customer();
-		customer.setName("Mickey");
+		Name name = new Name ("Mickey", null);
+		customer.setName(name);
 		customer.setAddress("11 Some Random Street");
 		
 		return customer;

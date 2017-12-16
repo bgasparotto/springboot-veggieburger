@@ -4,12 +4,14 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cascade;
@@ -29,11 +31,9 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
-	@Length(min = 2,
-			max = 30,
-			message = "Name length must be between {min} and {max}")
-	private String name;
+	@Valid
+	@Embedded
+	private Name name;
 
 	@NotNull
 	@Length(min = 2,
@@ -46,51 +46,27 @@ public class Customer {
 	private Set<Purchase> purchases;
 
 	/**
-	 * <p>
 	 * Constructor.
-	 * </p>
-	 * 
-	 * <p>
-	 * Initialises an object using system default values for its attributes and
-	 * {@code null} for its {@code id}.
-	 * </p>
-	 * 
-	 * <p>
-	 * Consider using the constructors that receive parameters instead.
-	 * </p>
+	 *
 	 */
 	public Customer() {
 		this(null, null);
 	}
 
 	/**
-	 * <p>
 	 * Constructor.
-	 * </p>
-	 * 
-	 * <p>
-	 * Initialises an object populating its attributes using the given
-	 * parameters.
-	 * </p>
 	 *
 	 * @param name
 	 *            The Customer's {@code name}
 	 * @param address
 	 *            The Customer's {@code address}
 	 */
-	public Customer(String name, String address) {
+	public Customer(Name name, String address) {
 		this(null, name, address);
 	}
 
 	/**
-	 * <p>
 	 * Constructor.
-	 * </p>
-	 * 
-	 * <p>
-	 * Initialises an object populating its attributes using the given
-	 * parameters.
-	 * </p>
 	 *
 	 * @param id
 	 *            The Customer's {@code id}
@@ -99,19 +75,12 @@ public class Customer {
 	 * @param address
 	 *            The Customer's {@code address}
 	 */
-	public Customer(Long id, String name, String address) {
+	public Customer(Long id, Name name, String address) {
 		this(id, name, address, new HashSet<Purchase>());
 	}
 
 	/**
-	 * <p>
 	 * Constructor.
-	 * </p>
-	 * 
-	 * <p>
-	 * Initialises an object populating its attributes using the given
-	 * parameters.
-	 * </p>
 	 *
 	 * @param id
 	 *            The Customer's {@code id}
@@ -122,7 +91,7 @@ public class Customer {
 	 * @param purchases
 	 *            The Customer's {@code purchases}
 	 */
-	public Customer(Long id, String name, String address,
+	public Customer(Long id, Name name, String address, 
 			Set<Purchase> purchases) {
 		this.id = id;
 		this.name = name;
@@ -144,7 +113,7 @@ public class Customer {
 	 *
 	 * @return The Customer's {@code name}
 	 */
-	public String getName() {
+	public Name getName() {
 		return name;
 	}
 
@@ -182,7 +151,7 @@ public class Customer {
 	 * @param name
 	 *            The Customer's {@code name} to set
 	 */
-	public void setName(String name) {
+	public void setName(Name name) {
 		this.name = name;
 	}
 

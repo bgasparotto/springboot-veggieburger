@@ -15,19 +15,32 @@
 				th:if="${globalMessage}" th:text="${globalMessage}">
 				Customer created.
 			</div>
-			<table class="table table-striped">
+			<table class="table">
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Name</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="id" th:text="${customer.id}">1</td>
+						<td id="first_name" th:text="${customer.name.firstName}">First Name</td>
+						<td id="last_name" th:text="${customer.name.lastName}">Last Name</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<table class="table">
+				<thead>
+					<tr>
 						<th>Address</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td id="id" th:text="${customer.id}">123</td>
-						<td id="nome" th:text="${customer.name}">Name</td>
-						<td id="endereco" th:text="${customer.address}">Address</td>
+						<td id="address" th:text="${customer.address}">Address</td>
 					</tr>
 				</tbody>
 			</table>
