@@ -5,28 +5,6 @@
 	<item id="3" name="Medium Veggie Burger" price="11"/>
 	<item id="4" name="Big Veggie Burger" price="13"/>
 	<item id="5" name="Family Veggie Burger" price="18"/>
-	<customer id="1" first_name="Bruno" last_name="Gasparotto" address="208 Paulista Avenue, Sao Paulo - SP. Brazil"/>
-	<customer id="2" first_name="John" last_name="Wick" address="1400 Faria Lima, Sao Paulo - SP. Brazil"/>
-	<customer id="3" first_name="Rose" last_name="Tyler" address="300 Casa Verde Avenue, Sao Paulo - SP. Brazil"/>
-	<purchase id="1" date="2017-12-01 07:01:01" total_value="30" customer_id="1"/>
-	<purchase id="2" date="2017-12-01 07:02:01" total_value="19" customer_id="1"/>
-	<purchase id="3" date="2017-12-01 07:03:01" total_value="38" customer_id="1"/>
-	<purchase id="4" date="2017-12-01 07:04:01" total_value="10" customer_id="2"/>
-	<purchase id="5" date="2017-12-01 07:05:01" total_value="43" customer_id="2"/>
-	<purchase_items purchase_id="1" items_id="1"/>
-	<purchase_items purchase_id="1" items_id="2"/>
-	<purchase_items purchase_id="1" items_id="3"/>
-	<purchase_items purchase_id="2" items_id="1"/>
-	<purchase_items purchase_id="2" items_id="2"/>
-	<purchase_items purchase_id="3" items_id="1"/>
-	<purchase_items purchase_id="3" items_id="1"/>
-	<purchase_items purchase_id="3" items_id="2"/>
-	<purchase_items purchase_id="3" items_id="2"/>
-	<purchase_items purchase_id="4" items_id="1"/>
-	<purchase_items purchase_id="5" items_id="1"/>
-	<purchase_items purchase_id="5" items_id="2"/>
-	<purchase_items purchase_id="5" items_id="3"/>
-	<purchase_items purchase_id="5" items_id="4"/>
 	<country id="1" code="AF" name="Afghanistan"/>
 	<country id="2" code="AL" name="Albania"/>
 	<country id="3" code="DZ" name="Algeria"/>
@@ -272,4 +250,29 @@
 	<country id="243" code="ZR" name="Zaire"/>
 	<country id="244" code="ZM" name="Zambia"/>
 	<country id="245" code="ZW" name="Zimbabwe"/>
+	<address id="1" address_line1="208 Paulista Avenue" address_line2="Flat 12" post_code="123456" city_name="Sao Paulo" state_name="Sao Paulo" country_id="30"/>
+	<address id="2" address_line1="1400 Faria Lima" address_line2="House 3" post_code="123456" city_name="Sao Paulo" state_name="Sao Paulo" country_id="30"/>
+	<address id="3" address_line1="300 Casa Verde Avenue" post_code="123456" city_name="Sao Paulo" state_name="Sao Paulo" country_id="30"/>
+	<customer id="1" first_name="Bruno" last_name="Gasparotto" address_id="1"/>
+	<customer id="2" first_name="John" last_name="Wick" address_id="2"/>
+	<customer id="3" first_name="Rose" last_name="Tyler" address_id="3"/>
+	<purchase id="1" date="2017-12-01 07:01:01" total_value="30" customer_id="1"/>
+	<purchase id="2" date="2017-12-01 07:02:01" total_value="19" customer_id="1"/>
+	<purchase id="3" date="2017-12-01 07:03:01" total_value="38" customer_id="1"/>
+	<purchase id="4" date="2017-12-01 07:04:01" total_value="10" customer_id="2"/>
+	<purchase id="5" date="2017-12-01 07:05:01" total_value="43" customer_id="2"/>
+	<purchase_items purchase_id="1" items_id="1"/>
+	<purchase_items purchase_id="1" items_id="2"/>
+	<purchase_items purchase_id="1" items_id="3"/>
+	<purchase_items purchase_id="2" items_id="1"/>
+	<purchase_items purchase_id="2" items_id="2"/>
+	<purchase_items purchase_id="3" items_id="1"/>
+	<purchase_items purchase_id="3" items_id="1"/>
+	<purchase_items purchase_id="3" items_id="2"/>
+	<purchase_items purchase_id="3" items_id="2"/>
+	<purchase_items purchase_id="4" items_id="1"/>
+	<purchase_items purchase_id="5" items_id="1"/>
+	<purchase_items purchase_id="5" items_id="2"/>
+	<purchase_items purchase_id="5" items_id="3"/>
+	<purchase_items purchase_id="5" items_id="4"/>
 </dataset>

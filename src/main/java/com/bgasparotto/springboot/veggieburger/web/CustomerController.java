@@ -1,6 +1,8 @@
 package com.bgasparotto.springboot.veggieburger.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -16,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.bgasparotto.springboot.veggieburger.model.Country;
 import com.bgasparotto.springboot.veggieburger.model.Customer;
+import com.bgasparotto.springboot.veggieburger.persistence.CountryRepository;
 import com.bgasparotto.springboot.veggieburger.persistence.CustomerRepository;
 
 /**
@@ -29,6 +33,38 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerRepository repository;
+	
+	@Autowired
+	private CountryRepository countryRepository;
+	
+	/**
+	 * Prepares and returns the model and view with the necessary lists and
+	 * objects available in the model object.
+	 * 
+	 * @param customer
+	 *            The customer object if available, {@code null otherwise}
+	 * @param errors
+	 *            The list of object errors if a previous form was attempted to
+	 *            be submitted, {@code null} otherwise
+	 * @return The {@code ModelAndView} object with any non null parameters and
+	 *         the object model and view
+	 */
+	private ModelAndView form(Customer customer, List<ObjectError> errors) {
+		Map<String,Object> model = new HashMap<String,Object>();
+		
+		List<Country> availableCountries = countryRepository.findAll();
+		model.put("availableCountries", availableCountries);
+		
+		if (customer != null) {
+			model.put("customer", customer);
+		}
+		
+		if (errors != null) {
+			model.put("formErrors", errors);
+		}
+		
+		return new ModelAndView("customers/form", model);
+	}
 
 	@GetMapping
 	public ModelAndView list() {
@@ -42,8 +78,8 @@ public class CustomerController {
 	}
 
 	@GetMapping("/new")
-	public String createForm(@ModelAttribute Customer customer) {
-		return "customers/form";
+	public ModelAndView createForm(@ModelAttribute Customer customer) {
+		return form(customer, null);
 	}
 
 	@PostMapping(params = "form")
@@ -51,11 +87,8 @@ public class CustomerController {
 			RedirectAttributes redirect) {
 
 		if (result.hasErrors()) {
-			String viewName = "/customers/form";
-			String modelName = "formErrors";
 			List<ObjectError> modelObject = result.getAllErrors();
-
-			return new ModelAndView(viewName, modelName, modelObject);
+			return form(customer, modelObject);
 		}
 
 		customer = repository.save(customer);
@@ -68,7 +101,7 @@ public class CustomerController {
 
 	@GetMapping("modify/{id}")
 	public ModelAndView modifyForm(@PathVariable("id") Customer customer) {
-		return new ModelAndView("customers/form", "customer", customer);
+		return form(customer, null);
 	}
 	
 	@GetMapping("remove/{id}")

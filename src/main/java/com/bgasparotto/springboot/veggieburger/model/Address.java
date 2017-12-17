@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -44,7 +45,8 @@ public class Address {
 		  message = "State name length must be between {min} and {max}")
 	private String stateName;
 	
-	@NotNull
+	@Valid
+	@NotNull(message = "Country must be set")
 	@ManyToOne
 	private Country country;
 

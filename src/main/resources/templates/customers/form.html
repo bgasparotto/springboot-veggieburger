@@ -13,6 +13,8 @@
 		
 			<form id="customerForm" th:action="@{/customers/(form)}"
 				th:object="${customer}" action="#" method="post">
+				
+				<input type="hidden" th:field="*{id}"/>
 			
 				<div class="row">
 					<div class="col-md-6 col-lg-6">
@@ -37,17 +39,83 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="form-group" 
-					th:class="${#fields.hasErrors('address')} ? 
-						'form-group has-error' : 'form-group'">
-					<label for="address" class="control-label">Address</label>
-					<textarea id="address" class="form-control" th:field="*{address}" >
-					</textarea>
-					<span class="help-block" th:if="${#fields.hasErrors('address')}" 
-						th:text="${#fields.errors('address')}">Address validation error</span>
+				
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="form-group" 
+							th:class="${#fields.hasErrors('address.addressLine1')} ? 
+								'form-group has-error' : 'form-group'">
+							<label for="address_line1" class="control-label">Address Line 1</label>
+							<input id="address_line1" class="form-control" type="text" th:field="*{address.addressLine1}" />
+							<span class="help-block" th:if="${#fields.hasErrors('address.addressLine1')}" 
+								th:text="${#fields.errors('address.addressLine1')}">Address Line 1 validation error</span>
+						</div>
+					</div>
+					
+					<div class="col-lg-6">
+						<div class="form-group" 
+							th:class="${#fields.hasErrors('address.addressLine2')} ? 
+								'form-group has-error' : 'form-group'">
+							<label for="address_line2" class="control-label">Address Line 2</label>
+							<input id="address_line2" class="form-control" type="text" th:field="*{address.addressLine2}" />
+							<span class="help-block" th:if="${#fields.hasErrors('address.addressLine2')}" 
+								th:text="${#fields.errors('address.addressLine2')}">Address Line 2 validation error</span>
+						</div>
+					</div>
 				</div>
 				
+				<div class="row">
+					<div class="col-md-6 col-lg-6">
+						<div class="form-group" 
+							th:class="${#fields.hasErrors('address.country')} ? 
+								'form-group has-error' : 'form-group'">
+							<label for="country" class="control-label">Country</label>
+							<select id="country" class="form-control" th:field="*{address.country}" >
+								<option th:value="-1" th:text="Select..."></option>
+								<option th:each="country : ${availableCountries}" 
+									th:value="${country.id}" 
+									th:text="${country.name}" />
+							</select>
+							<span class="help-block" th:if="${#fields.hasErrors('address.country')}" 
+								th:text="${#fields.errors('address.country')}">Country validation error</span>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-6">
+						<div class="form-group" 
+							th:class="${#fields.hasErrors('address.postCode')} ? 
+								'form-group has-error' : 'form-group'">
+							<label for="post_code" class="control-label">Post Code</label>
+							<input id="post_code" class="form-control" type="text" th:field="*{address.postCode}" />
+							<span class="help-block" th:if="${#fields.hasErrors('address.postCode')}" 
+								th:text="${#fields.errors('address.postCode')}">Post Code validation error</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6 col-lg-6">
+						<div class="form-group" 
+							th:class="${#fields.hasErrors('address.cityName')} ? 
+								'form-group has-error' : 'form-group'">
+							<label for="city_name" class="control-label">City Name</label>
+							<input id="city_name" class="form-control" type="text" th:field="*{address.cityName}" />
+							<span class="help-block" th:if="${#fields.hasErrors('address.cityName')}" 
+								th:text="${#fields.errors('address.cityName')}">City Name validation error</span>
+						</div>
+					</div>
+					
+					<div class="col-md-6 col-lg-6">
+						<div class="form-group" 
+							th:class="${#fields.hasErrors('address.stateName')} ? 
+								'form-group has-error' : 'form-group'">
+							<label for="state_name" class="control-label">State Name</label>
+							<input id="state_name" class="form-control" type="text" th:field="*{address.stateName}" />
+							<span class="help-block" th:if="${#fields.hasErrors('address.stateName')}" 
+								th:text="${#fields.errors('address.stateName')}">State Name validation error</span>
+						</div>
+					</div>
+				</div>
+					
 				<input type="submit" class="btn btn-default" value="Save" />
 				<a th:href="@{/customers/}" href="customers.html">Go back</a>
 				

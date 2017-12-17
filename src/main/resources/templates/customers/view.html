@@ -15,33 +15,46 @@
 				th:if="${globalMessage}" th:text="${globalMessage}">
 				Customer created.
 			</div>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>First Name</th>
-						<th>Last Name</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td id="id" th:text="${customer.id}">1</td>
-						<td id="first_name" th:text="${customer.name.firstName}">First Name</td>
-						<td id="last_name" th:text="${customer.name.lastName}">Last Name</td>
-					</tr>
-				</tbody>
-			</table>
 			
 			<table class="table">
-				<thead>
-					<tr>
-						<th>Address</th>
-					</tr>
-				</thead>
 				<tbody>
 					<tr>
-						<td id="address" th:text="${customer.address}">Address</td>
+						<th class="col-md-2">Id</th>
+						<td class="col-md-10" id="id" th:text="${customer.id}">1</td>
 					</tr>
+					<tr>
+						<th class="col-md-2">First Name</th>
+						<td class="col-md-10" id="first_name" th:text="${customer.name.firstName}">First Name</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">Last Name</th>
+						<td class="col-md-10" id="last_name" th:text="${customer.name.lastName}">Last Name</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">Address Line 1</th>
+						<td class="col-md-10" id="address_line1" th:text="${customer.address.addressLine1}">Address Line 1</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">Address Line 2</th>
+						<td class="col-md-10" id="address_line2" th:text="${customer.address.addressLine2}">Address Line 2</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">Post Code</th>
+						<td class="col-md-10" id="post_code" th:text="${customer.address.postCode}">Post Code</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">City</th>
+						<td class="col-md-10" id="city_name" th:text="${customer.address.cityName}">City</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">State</th>
+						<td class="col-md-10" id="state_name" th:text="${customer.address.stateName}">State</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">Country</th>
+						<td class="col-md-10" id="country" th:text="${customer.address.country.name}">Country</td>
+					</tr>
+					
 				</tbody>
 			</table>
 			

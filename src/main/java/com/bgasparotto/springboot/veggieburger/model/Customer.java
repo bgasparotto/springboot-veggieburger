@@ -1,6 +1,5 @@
 package com.bgasparotto.springboot.veggieburger.model;
 
-import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -11,9 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -34,12 +33,12 @@ public class Customer {
 	@Valid
 	@Embedded
 	private Name name;
-
+	
+	@Valid
 	@NotNull
-	@Size(min = 2,
-			max = 300,
-			message = "Address size must be between {min} and {max}")
-	private String address;
+	@OneToOne
+	@Cascade(CascadeType.ALL)
+	private Address address;
 
 	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
 	@Cascade(CascadeType.ALL)
@@ -56,42 +55,28 @@ public class Customer {
 	/**
 	 * Constructor.
 	 *
+	 * @param id
+	 *            The customer's {@code id}
 	 * @param name
-	 *            The Customer's {@code name}
-	 * @param address
-	 *            The Customer's {@code address}
+	 *            The customer's {@code name}
 	 */
-	public Customer(Name name, String address) {
-		this(null, name, address);
+	public Customer(Long id, Name name) {
+		this(id, name, null, null);
 	}
 
 	/**
 	 * Constructor.
 	 *
 	 * @param id
-	 *            The Customer's {@code id}
+	 *            The customer's {@code id}
 	 * @param name
-	 *            The Customer's {@code name}
-	 * @param address
-	 *            The Customer's {@code address}
-	 */
-	public Customer(Long id, Name name, String address) {
-		this(id, name, address, new HashSet<Purchase>());
-	}
-
-	/**
-	 * Constructor.
-	 *
-	 * @param id
-	 *            The Customer's {@code id}
-	 * @param name
-	 *            The Customer's {@code name}
-	 * @param address
-	 *            The Customer's {@code address}
+	 *            The customer's {@code name}
+	 * @param addresses
+	 *            The customer's {@code address}
 	 * @param purchases
-	 *            The Customer's {@code purchases}
+	 *            The customer's {@code purchases}
 	 */
-	public Customer(Long id, Name name, String address, 
+	public Customer(Long id, Name name, Address address,
 			Set<Purchase> purchases) {
 		this.id = id;
 		this.name = name;
@@ -102,7 +87,7 @@ public class Customer {
 	/**
 	 * Gets the Customer's {@code id}.
 	 *
-	 * @return The Customer's {@code id}
+	 * @return the {@code Customer}'s {@code id}
 	 */
 	public Long getId() {
 		return id;
@@ -111,7 +96,7 @@ public class Customer {
 	/**
 	 * Gets the Customer's {@code name}.
 	 *
-	 * @return The Customer's {@code name}
+	 * @return the {@code Customer}'s {@code name}
 	 */
 	public Name getName() {
 		return name;
@@ -120,16 +105,16 @@ public class Customer {
 	/**
 	 * Gets the Customer's {@code address}.
 	 *
-	 * @return The Customer's {@code address}
+	 * @return the {@code Customer}'s {@code address}
 	 */
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
 	/**
 	 * Gets the Customer's {@code purchases}.
 	 *
-	 * @return The Customer's {@code purchases}
+	 * @return the {@code Customer}'s {@code purchases}
 	 */
 	public Set<Purchase> getPurchases() {
 		return purchases;
@@ -139,7 +124,7 @@ public class Customer {
 	 * Sets the Customer's {@code id}.
 	 *
 	 * @param id
-	 *            The Customer's {@code id} to set
+	 *            the {@code Customer}'s {@code id} to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
@@ -149,7 +134,7 @@ public class Customer {
 	 * Sets the Customer's {@code name}.
 	 *
 	 * @param name
-	 *            The Customer's {@code name} to set
+	 *            the {@code Customer}'s {@code name} to set
 	 */
 	public void setName(Name name) {
 		this.name = name;
@@ -159,9 +144,9 @@ public class Customer {
 	 * Sets the Customer's {@code address}.
 	 *
 	 * @param address
-	 *            The Customer's {@code address} to set
+	 *            the {@code Customer}'s {@code address} to set
 	 */
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 
@@ -169,11 +154,10 @@ public class Customer {
 	 * Sets the Customer's {@code purchases}.
 	 *
 	 * @param purchases
-	 *            The Customer's {@code purchases} to set
+	 *            the {@code Customer}'s {@code purchases} to set
 	 */
 	public void setPurchases(Set<Purchase> purchases) {
-		this.purchases.clear();
-		this.purchases.addAll(purchases);
+		this.purchases = purchases;
 	}
 
 	@Override
