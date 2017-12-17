@@ -15,19 +15,20 @@
 				th:if="${globalMessage}" th:text="${globalMessage}">
 				Item created.
 			</div>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Price</th>
-					</tr>
-				</thead>
+			
+			<table class="table">
 				<tbody>
 					<tr>
-						<td id="id" th:text="${item.id}">123</td>
-						<td id="nome" th:text="${item.name}">Name</td>
-						<td id="endereco" th:text="${item.price}">00.0</td>
+						<th class="col-md-2">Id</th>
+						<td class="col-md-10" id="id" th:text="${item.id}">1</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">Name</th>
+						<td class="col-md-10" id="id" th:text="${item.name}">Name</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">Price</th>
+						<td class="col-md-10" id="id" th:text="${item.price}">0.00</td>
 					</tr>
 				</tbody>
 			</table>

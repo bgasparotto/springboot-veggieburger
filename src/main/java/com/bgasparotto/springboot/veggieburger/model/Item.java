@@ -8,8 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Length;
+import javax.validation.constraints.Size;
 
 /**
  * Entity that represents an item of the system.
@@ -24,10 +23,10 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
-	@Length(min = 2,
-			max = 30,
-			message = "Name length must be between {min} and {max}")
+	@NotNull(message = "Name must be set")
+	@Size(min = 2,
+		  max = 30,
+		  message = "Item name size must be between {min} and {max}")
 	private String name;
 
 	@NotNull(message = "Price must be set")
