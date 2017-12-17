@@ -43,7 +43,40 @@ public class PurchaseController {
 	@Autowired
 	private ItemRepository itemRepository;
 	
-	@Autowired PurchaseService service;
+	@Autowired
+	private PurchaseService service;
+	
+	/**
+	 * Prepares and returns the model and view with the necessary lists and
+	 * objects available in the model object.
+	 * 
+	 * @param purchase
+	 *            The purchase object if available, {@code null} otherwise
+	 * @param errors
+	 *            The list of object errors if a previous form was attempted to
+	 *            be submitted, {@code null} otherwise
+	 * @return The {@code ModelAndView} object with any non null parameters and
+	 *         the object model and view
+	 */
+	private ModelAndView form(Purchase purchase, List<ObjectError> errors) {
+		Map<String,Object> model = new HashMap<String,Object>();
+		
+		List<Customer> availableCustomers = customerRepository.findAll();
+		model.put("availableCustomers", availableCustomers);
+		
+		List<Item> availableItems = itemRepository.findAll();
+		model.put("availableItems", availableItems);
+		
+		if (purchase != null) {
+			model.put("purchase", purchase);
+		}
+		
+		if (errors != null) {
+			model.put("formErrors", errors);
+		}
+		
+		return new ModelAndView("purchases/form", model);
+	}
 
 	@GetMapping
 	public ModelAndView list() {
@@ -74,11 +107,8 @@ public class PurchaseController {
 
 		/* Validate against errors. */
 		if (result.hasErrors()) {
-			String viewName = "/purchases/form";
-			String modelName = "formErrors";
 			List<ObjectError> modelObject = result.getAllErrors();
-
-			return new ModelAndView(viewName, modelName, modelObject);
+			return form(purchase, modelObject);
 		}
 
 		/* Save the new purchase. */
@@ -93,15 +123,7 @@ public class PurchaseController {
 
 	@GetMapping("modify/{id}")
 	public ModelAndView modifyForm(@PathVariable("id") Purchase purchase) {
-		List<Customer> availableCustomers = customerRepository.findAll();
-		List<Item> availableItems = itemRepository.findAll();
-		
-		Map<String,Object> model = new HashMap<String,Object>();
-		model.put("availableCustomers", availableCustomers);
-		model.put("availableItems", availableItems);
-		model.put("purchase", purchase);
-		
-		return new ModelAndView("purchases/form", model);
+		return form(purchase, null);
 	}
 	
 	@GetMapping("remove/{id}")

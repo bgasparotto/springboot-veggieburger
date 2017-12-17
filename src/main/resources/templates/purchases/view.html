@@ -15,26 +15,41 @@
 				th:if="${globalMessage}" th:text="${globalMessage}">
 				Purchase created.
 			</div>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Customer's name</th>
-						<th>Customer's address</th>
-						<th>Date</th>
-						<th>Total Value</th>
-					</tr>
-				</thead>
+			
+			<table class="table">
 				<tbody>
 					<tr>
-						<td id="id" th:text="${purchase.id}">123</td>
-						<td id="customer-name" th:text="${purchase.customer.name}">Name</td>
-						<td id="customer-address" th:text="${purchase.customer.address}">Address</td>
-						<td id="date" th:text="${#dates.format(purchase.date,'dd/MM/yyyy HH:mm:ss')}">10/12/2017 11:22:33</td>
-						<td id="total-value" th:text="${purchase.totalValue}">00.0</td>
+						<th class="col-md-2">Id</th>
+						<td class="col-md-10" id="id" th:text="${purchase.id}">1</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">Customer's Name</th>
+						<td class="col-md-10" id="name" 
+							th:text="${purchase.customer.name.firstName + ' '
+									 + purchase.customer.name.lastName}">1</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">Customer's Address</th>
+						<td class="col-md-10" id="address" 
+							th:text="${purchase.customer.address.addressLine1 + ', ' + 
+									(not #strings.isEmpty(purchase.customer.address.addressLine2) ? (purchase.customer.address.addressLine2 + ', ') : '') + 
+									purchase.customer.address.postCode + ', ' + 
+									purchase.customer.address.cityName + ', ' + 
+									purchase.customer.address.stateName + ', ' + 
+									purchase.customer.address.country.name}">Address</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">Date</th>
+						<td class="col-md-10" id="date" 
+							th:text="${#dates.format(purchase.date,'dd/MM/yyyy')}">10/12/2017</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">Total Value</th>
+						<td class="col-md-10" id="total_value" th:text="${purchase.totalValue}">0.00</td>
 					</tr>
 				</tbody>
 			</table>
+			
 			<table class="table table-striped">
 				<thead>
 					<tr>

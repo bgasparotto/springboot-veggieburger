@@ -33,9 +33,9 @@
 						<td>
 							<a href="view.html" 
 								th:href="@{'/purchases/'+${purchase.id}}"
-								th:text="${purchase.customer.name}">Name</a>
+								th:text="${purchase.customer.name.firstName + ' ' + purchase.customer.name.lastName}">Name</a>
 						</td>
-						<td th:text="${#dates.format(purchase.date,'dd/MM/yyyy HH:mm:ss')}">Date</td>
+						<td th:text="${#dates.format(purchase.date,'dd/MM/yyyy')}">Date</td>
 						<td th:text="${purchase.totalValue}">100.0</td>
 					</tr>
 				</tbody>
