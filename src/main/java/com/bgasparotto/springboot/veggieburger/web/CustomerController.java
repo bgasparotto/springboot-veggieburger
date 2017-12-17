@@ -42,7 +42,7 @@ public class CustomerController {
 	 * objects available in the model object.
 	 * 
 	 * @param customer
-	 *            The customer object if available, {@code null otherwise}
+	 *            The customer object if available, {@code null} otherwise
 	 * @param errors
 	 *            The list of object errors if a previous form was attempted to
 	 *            be submitted, {@code null} otherwise
