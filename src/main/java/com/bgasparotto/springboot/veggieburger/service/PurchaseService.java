@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.bgasparotto.springboot.veggieburger.service;
 
 import com.bgasparotto.springboot.veggieburger.model.Purchase;
