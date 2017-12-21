@@ -76,18 +76,6 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		
-		<!-- H2 in memory database -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-		</dependency>
-		
-		<!-- MySQL database -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-		
 		<!-- WebJars for Bootstrap and JQuery. -->
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -178,5 +166,51 @@
 			
 		</plugins>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+            	<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+			
+				<!-- H2 in memory database -->
+				<dependency>
+					<groupId>com.h2database</groupId>
+					<artifactId>h2</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+	
+		<profile>
+			<id>mysql</id>
+			<dependencies>
+			
+				<!-- MySQL database -->
+				<dependency>
+					<groupId>mysql</groupId>
+					<artifactId>mysql-connector-java</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+		
+		<profile>
+			<id>heroku</id>
+			<activation>
+	            <property>
+	                <name>env.DYNO</name>
+	            </property>
+	        </activation>
+			<dependencies>
+			
+				<!-- MySQL database -->
+				<dependency>
+					<groupId>mysql</groupId>
+					<artifactId>mysql-connector-java</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 
 </project>
