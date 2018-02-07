@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,8 +17,6 @@ import javax.persistence.PreRemove;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -36,8 +35,7 @@ public class Purchase {
 	@ManyToOne(optional = true)
 	private Customer customer;
 
-	@ManyToMany
-	@Cascade(CascadeType.MERGE)
+	@ManyToMany(cascade = CascadeType.MERGE)
 	private List<Item> items;
 
 	@NotNull(message="Date must be set")

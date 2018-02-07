@@ -3,6 +3,7 @@ package com.bgasparotto.springboot.veggieburger.model;
 import java.util.Optional;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,9 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 /**
  * Entity that represents a customer of the system.
@@ -36,12 +34,10 @@ public class Customer {
 	
 	@Valid
 	@NotNull
-	@OneToOne
-	@Cascade(CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 
-	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
-	@Cascade(CascadeType.ALL)
+	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Purchase> purchases;
 
 	/**
